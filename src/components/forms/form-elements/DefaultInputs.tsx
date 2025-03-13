@@ -1,8 +1,8 @@
 import React, { useState, useCallback } from "react";
 import { Card } from "@/components/ui/card";
-import Label from "@/components/forms/label";
-import Input from "@/components/forms/input";
-import Select from "@/components/forms/select";
+import {Label} from "@/components/forms/label";
+import {Input} from "@/components/forms/input";
+import {Select} from "@/components/forms/select";
 import { 
   FiCalendar, 
   FiChevronDown, 

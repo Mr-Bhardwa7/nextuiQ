@@ -1,7 +1,7 @@
 "use client";
 import { useState, useCallback } from "react";
 import {Card as ComponentCard} from "@/components/ui/card";
-import Checkbox from "../input/Checkbox";
+import {Checkbox} from "../input/Checkbox";
 
 export default function CheckboxComponents() {
   const [checkboxStates, setCheckboxStates] = useState({

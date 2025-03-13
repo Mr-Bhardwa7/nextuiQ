@@ -1,5 +1,5 @@
-import Form from '@/components/forms/form';
-import Button from '@/components/ui/button';
+import {Form} from '@/components/forms/form';
+import {Button} from '@/components/ui/button';
 
 const FormShowcase = () => {
   return (

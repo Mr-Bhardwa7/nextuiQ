@@ -14,7 +14,7 @@ export interface RadioSmProps {
   "aria-describedby"?: string;
 }
 
-const RadioSm = forwardRef<HTMLInputElement, RadioSmProps>(({
+const RadioSmComponent = forwardRef<HTMLInputElement, RadioSmProps>(({
   id,
   name,
   value,
@@ -76,6 +76,6 @@ const RadioSm = forwardRef<HTMLInputElement, RadioSmProps>(({
   );
 });
 
-RadioSm.displayName = "RadioSm";
+RadioSmComponent.displayName = "RadioSm";
 
-export default RadioSm;
+export const RadioSm = RadioSmComponent;

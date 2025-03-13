@@ -13,7 +13,7 @@ export interface CheckboxProps {
   "aria-describedby"?: string;
 }
 
-const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(({
+const CheckboxComponent = forwardRef<HTMLInputElement, CheckboxProps>(({
   label,
   checked,
   id,
@@ -101,6 +101,6 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(({
   );
 });
 
-Checkbox.displayName = "Checkbox";
+CheckboxComponent.displayName = "Checkbox";
 
-export default Checkbox;
+export const Checkbox = CheckboxComponent;

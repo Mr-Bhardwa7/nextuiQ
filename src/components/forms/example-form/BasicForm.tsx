@@ -1,9 +1,9 @@
 "use client";
 import React, { useCallback } from "react";
 import { Card } from "@/components/ui/card";
-import Form from "@/components/forms/form";
-import Input from "@/components/forms/input";
-import Button from "@/components/ui/button";
+import {Form} from "@/components/forms/form";
+import {Input} from "@/components/forms/input";
+import {Button} from "@/components/ui/button";
 
 export default function BasicForm() {
   const handleSubmit = useCallback((e: React.FormEvent) => {

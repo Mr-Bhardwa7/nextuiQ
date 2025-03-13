@@ -31,7 +31,7 @@ export interface LinkProps
   external?: boolean;
 }
 
-const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
+const LinkComponent = React.forwardRef<HTMLAnchorElement, LinkProps>(
   ({ className, variant, size, href, external, children, ...props }, ref) => {
     const externalProps = external
       ? {
@@ -71,6 +71,6 @@ const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
   }
 );
 
-Link.displayName = "Link";
+LinkComponent.displayName = "Link";
 
-export default Link;
+export const Link = LinkComponent;

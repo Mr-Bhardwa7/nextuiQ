@@ -14,7 +14,7 @@ export interface FileInputProps {
   "aria-describedby"?: string;
 }
 
-const FileInput = forwardRef<HTMLInputElement, FileInputProps>(({
+const FileInputComponent = forwardRef<HTMLInputElement, FileInputProps>(({
   className,
   onChange,
   label,
@@ -62,6 +62,6 @@ const FileInput = forwardRef<HTMLInputElement, FileInputProps>(({
   );
 });
 
-FileInput.displayName = "FileInput";
+FileInputComponent.displayName = "FileInput";
 
-export default FileInput;
+export const FileInput = FileInputComponent;

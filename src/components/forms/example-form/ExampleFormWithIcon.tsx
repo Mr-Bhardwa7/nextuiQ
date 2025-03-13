@@ -1,11 +1,11 @@
 "use client";
 import React, { useState, useCallback } from "react";
 import { Card } from "@/components/ui/card";
-import Form from "@/components/forms/form";
-import Input from "@/components/forms/input";
-import Checkbox from "@/components/forms/input/Checkbox";
-import Label from "@/components/forms/label";
-import Button from "@/components/ui/button";
+import {Form} from "@/components/forms/form";
+import {Input} from "@/components/forms/input";
+import {Checkbox} from "@/components/forms/input/Checkbox";
+import {Label} from "@/components/forms/label";
+import {Button} from "@/components/ui/button";
 import { 
   FiArrowRight, 
   FiMail, 

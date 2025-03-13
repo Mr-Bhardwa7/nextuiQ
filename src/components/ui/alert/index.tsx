@@ -1,6 +1,6 @@
 import React from "react";
 import { FiAlertCircle, FiCheckCircle, FiInfo, FiXCircle, FiArrowRight } from 'react-icons/fi';
-import Button from "../button";
+import {Button} from "../button";
 
 export interface AlertProps {
   variant: "success" | "error" | "warning" | "info";
@@ -14,7 +14,7 @@ export interface AlertProps {
   id?: string;
 }
 
-const Alert: React.FC<AlertProps> = ({
+export const Alert: React.FC<AlertProps> = ({
   variant,
   title,
   message,
@@ -125,5 +125,3 @@ const Alert: React.FC<AlertProps> = ({
     </div>
   );
 };
-
-export default Alert;

@@ -1,4 +1,4 @@
-import AvatarText from '@/components/ui/avatar-text';
+import {AvatarText} from '@/components/ui/avatar-text';
 
 const AvatarTextShowcase = () => {
   return (

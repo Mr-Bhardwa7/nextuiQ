@@ -3,7 +3,7 @@ export interface LoaderProps {
   variant?: 'pulse' | 'circular';
 }
 
-const Loader = ({ className = '', variant = 'pulse' }: LoaderProps) => {
+export const Loader = ({ className = '', variant = 'pulse' }: LoaderProps) => {
   if (variant === 'circular') {
     return (
       <div className={`animate-spin ${className}`}>
@@ -23,5 +23,3 @@ const Loader = ({ className = '', variant = 'pulse' }: LoaderProps) => {
     <div className={`animate-pulse rounded-lg bg-slate-200 dark:bg-slate-700 ${className}`} />
   );
 };
-
-export default Loader;

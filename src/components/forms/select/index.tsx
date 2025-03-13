@@ -22,7 +22,7 @@ export interface SelectProps {
   "aria-describedby"?: string;
 }
 
-const Select: React.FC<SelectProps> = ({
+const SelectComponent = ({
   options,
   placeholder = "Select an option",
   onChange,
@@ -35,7 +35,7 @@ const Select: React.FC<SelectProps> = ({
   id,
   "aria-label": ariaLabel,
   "aria-describedby": ariaDescribedby,
-}) => {
+}: SelectProps) => {
   const [selectedValue, setSelectedValue] = useState<string>(defaultValue);
   const uniqueId = useId();
   const selectId = id || uniqueId;
@@ -100,6 +100,6 @@ const Select: React.FC<SelectProps> = ({
   );
 };
 
-Select.displayName = "Select";
+SelectComponent.displayName = "Select";
 
-export default React.memo(Select);
+export const Select = React.memo(SelectComponent);

@@ -8,7 +8,7 @@ export interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> 
   "aria-label"?: string;
 }
 
-const Label = forwardRef<HTMLLabelElement, LabelProps>(({
+const LabelComponent = forwardRef<HTMLLabelElement, LabelProps>(({
   htmlFor,
   children,
   className,
@@ -35,6 +35,6 @@ const Label = forwardRef<HTMLLabelElement, LabelProps>(({
   );
 });
 
-Label.displayName = "Label";
+LabelComponent.displayName = "Label";
 
-export default Label;
+export const Label = LabelComponent;

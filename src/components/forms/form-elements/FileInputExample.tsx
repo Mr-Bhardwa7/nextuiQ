@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { Card } from "../../ui/card";
-import Input from "@/components/forms/input";
-import Label from "@/components/forms/label";
+import {Input} from "@/components/forms/input";
+import {Label} from "@/components/forms/label";
 
 export default function FileInputExample() {
   const handleFileChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {

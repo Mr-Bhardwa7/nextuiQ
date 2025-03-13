@@ -1,8 +1,8 @@
 import  { useState, useCallback } from "react";
 import { Card } from "@/components/ui/card";
-import Label from "@/components/forms/label";
-import Select from "@/components/forms/select";
-import MultiSelect from "@/components/forms/select/MultiSelect";
+import {Label} from "@/components/forms/label";
+import {Select} from "@/components/forms/select";
+import {MultiSelect} from "@/components/forms/select/MultiSelect";
 import { FiChevronDown } from "react-icons/fi";
 
 export default function SelectInputs() {

@@ -15,7 +15,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   ariaDescribedBy?: string;
 }
 
-const Button = ({
+export const Button = ({
   children,
   className = '',
   variant = 'primary',
@@ -115,4 +115,3 @@ const Button = ({
   );
 };
 
-export default Button;

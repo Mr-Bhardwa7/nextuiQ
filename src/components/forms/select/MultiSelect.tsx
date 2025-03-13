@@ -20,7 +20,7 @@ export interface MultiSelectProps {
   "aria-describedby"?: string;
 }
 
-const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(({
+const MultiSelectComponent = React.forwardRef<HTMLDivElement, MultiSelectProps>(({
   label,
   options,
   defaultSelected = [],
@@ -228,6 +228,6 @@ const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(({
   );
 });
 
-MultiSelect.displayName = "MultiSelect";
+MultiSelectComponent.displayName = "MultiSelect";
 
-export default React.memo(MultiSelect);
+export const MultiSelect = React.memo(MultiSelectComponent);

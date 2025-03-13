@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Modal from './index';
-import Button from '@/components/ui/button';
+import {Modal} from './index';
+import {Button} from '@/components/ui/button';
 import { useModal } from '@/hooks/useModal';
 import { FiInfo, FiAlertTriangle, FiCheck, FiStar, FiDollarSign, FiPackage, FiBell } from 'react-icons/fi';
 

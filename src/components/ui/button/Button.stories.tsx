@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Button from '.';
+import {Button} from '.';
 import { FiArrowRight, FiDownload, FiTrash2 } from 'react-icons/fi';
 
 const meta: Meta<typeof Button> = {

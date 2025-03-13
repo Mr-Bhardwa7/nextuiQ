@@ -2,12 +2,14 @@
 
 Made with ❤️ using TypeScript & Tailwind CSS.
 
+[![npm version](https://badge.fury.io/js/nextuiq.svg)](https://www.npmjs.com/package/nextuiq) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![GitHub Stars](https://img.shields.io/github/stars/Mr-Bhardwa7/nextuiQ?style=social)](https://github.com/Mr-Bhardwa7/nextuiQ)
+[![TypeScript](https://img.shields.io/badge/TypeScript-4.9.5-blue.svg)](https://www.typescriptlang.org/) [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v3.3-38B2AC.svg)](https://tailwindcss.com/) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/t7ean/nextuiq/blob/main/CONTRIBUTING.md)
+
 **NextUIQ** is a modern, lightweight UI component library built for rapid development. It is designed with **TypeScript** and **Tailwind CSS**, offering prebuilt, customizable components that help developers build sleek and responsive user interfaces efficiently.
 
 ## Demo
 
-- **Showcase**: [View Component Showcase](https://nextuiq.vercel.app)
-- **Storybook**: [View Storybook Documentation](https://nextuiq-storybook.vercel.app)
+- **Storybook**: [View Storybook Documentation](https://nextuiq.vercel.app)
 
 ## Features
 
@@ -26,29 +28,63 @@ Made with ❤️ using TypeScript & Tailwind CSS.
 
 You can install NextuiQ via npm or yarn:
 
-```bash
-npm install nextuiq
-# or
-yarn add nextuiq
-```
-
 ## 📚 Quick Start
 
-Import and use components in your Next.js or React application:
+1. Install the package:
 
-```tsx
-import Button from "nextuiq";
+   ```bash
+   npm install nextuiq
+   ```
 
-const MyComponent = () => {
-  return (
-    <Button className="bg-blue-500 text-white px-4 py-2 rounded">
-      Click Me
-    </Button>
-  );
-};
+2. Import the styles in your global CSS file:
 
-export default MyComponent;
-```
+   ```bash
+   @import 'nextuiq/dist/styles.css';
+   ```
+
+3. Use components in your Next.js or React application:
+
+   ```tsx
+   import { Button } from "nextuiq";
+
+   const MyComponent = () => {
+     return <Button variant="primary">Click Me</Button>;
+   };
+
+   export default MyComponent;
+   ```
+
+## 🎨 Styling and Theming
+
+NextUIQ supports both light and dark modes out of the box. To enable dark mode:
+
+1. Add the following to your global CSS:
+
+   ```css
+   @import "nextuiq/dist/styles.css";
+
+   :root {
+     color-scheme: light;
+   }
+
+   .dark {
+     color-scheme: dark;
+   }
+   ```
+
+2. Wrap your app with the ThemeProvider:
+
+   ```tsx
+   import { ThemeProvider } from "nextuiq";
+
+   function App({ children }) {
+     return (
+       <ThemeProvider>
+         {children}
+       </ThemeProvider>
+     );
+   }-
+   ```
 
 ## 🔧 Customization
 

@@ -1,10 +1,10 @@
 import React from "react";
-import Button from "@/components/ui/button";
+import {Button} from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import Form from "@/components/forms/form";
-import Input from "@/components/forms/input";
-import Label from "@/components/forms/label";
-import Checkbox from "@/components/forms/input/Checkbox";
+import {Form} from "@/components/forms/form";
+import {Input} from "@/components/forms/input";
+import {Label} from "@/components/forms/label";
+import {Checkbox} from "@/components/forms/input/Checkbox";
 
 export default function SignInForm() {
   const handleSubmit = (e: React.FormEvent) => {

@@ -21,7 +21,7 @@ export interface InputProps {
   "aria-describedby"?: string;
 }
 
-const Input = forwardRef<HTMLInputElement, InputProps>(({
+const InputComponent = forwardRef<HTMLInputElement, InputProps>(({
   type = "text",
   id,
   name,
@@ -112,6 +112,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({
   );
 });
 
-Input.displayName = "Input";
+InputComponent.displayName = "Input";
+
+export const Input = InputComponent;
 
 export default Input;

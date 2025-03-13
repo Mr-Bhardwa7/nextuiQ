@@ -1,5 +1,5 @@
-import Modal from '@/components/ui/modal';
-import Button from '@/components/ui/button';
+import {Modal} from '@/components/ui/modal';
+import {Button} from '@/components/ui/button';
 import { useModal } from '@/hooks/useModal';
 import { FiInfo, FiAlertTriangle, FiStar, FiDollarSign, FiPackage, FiBell } from 'react-icons/fi';
 

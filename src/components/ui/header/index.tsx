@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
-import Button from "@/components/ui/button";
-import Link from "@/components/ui/link";
+import {Button} from "@/components/ui/button";
+import {Link} from "@/components/ui/link";
 
 export interface NavLink {
   label: string;
@@ -27,7 +27,7 @@ export interface HeaderProps {
   className?: string;
 }
 
-const Header = ({
+export const Header = ({
   logo,
   altText = "Logo",
   title,
@@ -147,4 +147,3 @@ const Header = ({
   );
 };
 
-export default Header;

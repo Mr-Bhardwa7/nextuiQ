@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import Dropdown from '@/components/ui/dropdown';
-import Button from '@/components/ui/button';
+import {Dropdown} from '@/components/ui/dropdown';
+import {Button} from '@/components/ui/button';
 import { FiUser, FiSettings, FiLogOut, FiChevronDown, FiEdit, FiTrash2 } from 'react-icons/fi';
 
 const DropdownShowcase = () => {

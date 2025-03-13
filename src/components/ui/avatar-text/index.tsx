@@ -1,5 +1,5 @@
 import React from 'react';
-import Avatar from '@/components/ui/avatar';
+import {Avatar} from '@/components/ui/avatar';
 
 export interface AvatarTextProps {
   src?: string;
@@ -14,7 +14,7 @@ export interface AvatarTextProps {
   subtitleId?: string;
 }
 
-const AvatarText: React.FC<AvatarTextProps> = ({
+export const AvatarText: React.FC<AvatarTextProps> = ({
   src,
   fallback,
   title,
@@ -71,5 +71,3 @@ const AvatarText: React.FC<AvatarTextProps> = ({
     </div>
   );
 };
-
-export default AvatarText;

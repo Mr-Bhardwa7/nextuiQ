@@ -18,7 +18,7 @@ export interface PhoneInputProps {
   "aria-describedby"?: string;
 }
 
-const PhoneInput: React.FC<PhoneInputProps> = ({
+const PhoneInputComponent = ({
   countries,
   placeholder = "+1 (555) 000-0000",
   onChange,
@@ -29,7 +29,7 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
   disabled = false,
   "aria-label": ariaLabel,
   "aria-describedby": ariaDescribedby,
-}) => {
+}: PhoneInputProps) => {
   const [selectedCountry, setSelectedCountry] = useState<string>("US");
   const [phoneNumber, setPhoneNumber] = useState<string>("+1");
 
@@ -136,4 +136,7 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
   );
 };
 
-export default React.memo(PhoneInput);
+const MemoizedPhoneInput = React.memo(PhoneInputComponent);
+MemoizedPhoneInput.displayName = "PhoneInput";
+
+export const PhoneInput = MemoizedPhoneInput;
