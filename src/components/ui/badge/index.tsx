@@ -16,7 +16,7 @@ export interface BadgeProps {
   ariaLabel?: string;
 }
 
-const Badge: React.FC<BadgeProps> = ({
+export const Badge: React.FC<BadgeProps> = ({
   variant = "light",
   color = "primary",
   size = "md",
@@ -79,5 +79,3 @@ const Badge: React.FC<BadgeProps> = ({
     </span>
   );
 };
-
-export default Badge;

@@ -1,10 +1,10 @@
 import { useState, useCallback } from 'react';
-import Avatar from '../avatar';
-import Badge from '../badge';
-import Button from '../button';
-import Dropdown from './index';
+import {Avatar} from '../avatar';
+import {Badge} from '../badge';
+import {Button} from '../button';
+import {Dropdown} from './index';
 
-export interface Notification {
+export interface NotificationProps {
   id: number;
   avatar: {
     src?: string;
@@ -19,12 +19,12 @@ export interface Notification {
 }
 
 export interface NotificationDropdownProps {
-  notifications: Notification[];
+  notifications: NotificationProps[];
   onViewAll?: () => void;
 }
 
 const NotificationItem = ({ notification, onItemClick }: { 
-  notification: Notification;
+  notification: NotificationProps;
   onItemClick: () => void;
 }) => (
   <div
@@ -65,7 +65,7 @@ const NotificationItem = ({ notification, onItemClick }: {
   </div>
 );
 
-export default function NotificationDropdown({ notifications, onViewAll }: NotificationDropdownProps) {
+export function NotificationDropdown({ notifications, onViewAll }: NotificationDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [notifying, setNotifying] = useState(notifications.length > 0);
 

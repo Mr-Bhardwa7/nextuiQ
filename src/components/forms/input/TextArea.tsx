@@ -18,7 +18,7 @@ export interface TextareaProps {
   "aria-describedby"?: string;
 }
 
-const TextArea = forwardRef<HTMLTextAreaElement, TextareaProps>(({
+const TextAreaComponent = forwardRef<HTMLTextAreaElement, TextareaProps>(({
   placeholder = "Enter your message",
   rows = 3,
   value = "",
@@ -98,6 +98,6 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextareaProps>(({
   );
 });
 
-TextArea.displayName = "TextArea";
+TextAreaComponent.displayName = "TextArea";
 
-export default TextArea;
+export const TextArea = TextAreaComponent;

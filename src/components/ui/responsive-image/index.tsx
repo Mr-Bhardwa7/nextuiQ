@@ -8,7 +8,7 @@ export interface ResponsiveImageProps extends React.ImgHTMLAttributes<HTMLImageE
   objectFit?: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down';
 }
 
-export const ResponsiveImage = React.forwardRef<HTMLImageElement, ResponsiveImageProps>(
+const ResponsiveImageComponent = React.forwardRef<HTMLImageElement, ResponsiveImageProps>(
   ({
     src,
     alt,
@@ -70,4 +70,6 @@ export const ResponsiveImage = React.forwardRef<HTMLImageElement, ResponsiveImag
   }
 );
 
-ResponsiveImage.displayName = 'ResponsiveImage';
+ResponsiveImageComponent.displayName = 'ResponsiveImage';
+
+export const ResponsiveImage = ResponsiveImageComponent;

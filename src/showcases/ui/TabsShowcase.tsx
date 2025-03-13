@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import Tabs from '@/components/ui/tabs';
-import Button from '@/components/ui/button';
+import {Tabs} from '@/components/ui/tabs';
+import {Button} from '@/components/ui/button';
 import { FiGrid, FiBell, FiBarChart2, FiUsers } from 'react-icons/fi';
 
 const TabsShowcase = () => {

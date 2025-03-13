@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Card, CardHeader, CardContent, CardMedia, CardActions } from '@/components/ui/card';
-import Button from '@/components/ui/button';
-import Avatar from '@/components/ui/avatar';
-import Badge from '@/components/ui/badge';
+import {Button} from '@/components/ui/button';
+import {Avatar} from '@/components/ui/avatar';
+import {Badge} from '@/components/ui/badge';
 import { FiTrendingUp, FiStar, FiMoreVertical } from 'react-icons/fi';
 
 const meta: Meta<typeof Card> = {

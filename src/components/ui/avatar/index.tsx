@@ -10,7 +10,7 @@ export interface AvatarProps {
   id?: string;
 }
 
-const Avatar: React.FC<AvatarProps> = ({
+export const Avatar: React.FC<AvatarProps> = ({
   src,
   alt = '',
   size = 'md',
@@ -81,5 +81,3 @@ const Avatar: React.FC<AvatarProps> = ({
     </div>
   );
 };
-
-export default Avatar;

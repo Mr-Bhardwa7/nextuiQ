@@ -11,7 +11,7 @@ export interface BreadcrumbProps {
   className?: string;
 }
 
-const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, className }) => {
+export const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, className }) => {
   return (
     <nav 
       className={cn("flex", className)} 
@@ -78,5 +78,3 @@ const ChevronIcon = ({ className }: { className?: string }) => (
     />
   </svg>
 );
-
-export default Breadcrumb;

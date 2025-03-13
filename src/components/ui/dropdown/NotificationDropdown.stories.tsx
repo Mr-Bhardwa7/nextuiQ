@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import NotificationDropdown from './NotificationDropdown';
+import {NotificationDropdown} from './NotificationDropdown';
 import { getRelativeTime } from '@/lib/utils';
 
 const meta: Meta<typeof NotificationDropdown> = {

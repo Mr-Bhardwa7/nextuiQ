@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Form from './index';
-import Button from '@/components/ui/button';
+import {Form} from './index';
+import {Button} from '@/components/ui/button';
 
 const meta: Meta<typeof Form> = {
   title: 'Components/Form/Form',  // Changed from 'Components/Forms/Form'

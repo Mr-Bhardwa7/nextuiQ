@@ -16,7 +16,7 @@ export interface ModalProps {
   initialFocus?: React.RefObject<HTMLElement>;
 }
 
-const Modal = ({
+export const Modal = ({
   isOpen,
   onClose,
   children,
@@ -142,5 +142,3 @@ const Modal = ({
     </div>
   );
 };
-
-export default Modal;

@@ -26,7 +26,7 @@ export interface DropdownProps {
   'aria-label'?: string;
 }
 
-const Dropdown = ({
+export const Dropdown = ({
   trigger,
   items = [],
   align = 'end',
@@ -173,5 +173,3 @@ const Dropdown = ({
     </div>
   );
 };
-
-export default Dropdown;

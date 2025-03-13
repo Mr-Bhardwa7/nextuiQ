@@ -1,4 +1,4 @@
-import Badge from '@/components/ui/badge';
+import {Badge} from '@/components/ui/badge';
 import { FiCheck, FiX, FiAlertCircle, FiInfo } from 'react-icons/fi';
 
 const BadgeShowcase = () => {

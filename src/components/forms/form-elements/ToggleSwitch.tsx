@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { Card } from "@/components/ui/card";
-import Switch from "@/components/forms/switch";
+import {Switch} from "@/components/forms/switch";
 
 export default function ToggleSwitch() {
   const handleSwitchChange = useCallback((checked: boolean) => {

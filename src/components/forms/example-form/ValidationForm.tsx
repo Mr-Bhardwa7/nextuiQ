@@ -1,9 +1,9 @@
 import React, { useState, useCallback } from "react";
 import { Card } from "@/components/ui/card";
-import Form from "@/components/forms/form";
-import Input from "@/components/forms/input";
-import Label from "@/components/forms/label";
-import Button from "@/components/ui/button";
+import {Form} from "@/components/forms/form";
+import {Input} from "@/components/forms/input";
+import {Label} from "@/components/forms/label";
+import {Button} from "@/components/ui/button";
 
 export default function ValidationForm() {
   const [errors, setErrors] = useState({

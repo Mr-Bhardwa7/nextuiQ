@@ -26,7 +26,7 @@ import ResponsiveImageShowcase from '@/showcases/ui/ResponsiveImageShowcase'
 import GridShowcase from '@/showcases/ui/GridShowcase';
 import TabsShowcase from '@/showcases/ui/TabsShowcase'
 import BreadcrumbShowcase from '@/showcases/ui/BreadcrumbShowcase'
-import Header from '@/components/ui/header';
+import {Header} from '@/components/ui/header';
 
 import FormShowcase from '@/showcases/forms/FormShowcase'
 import FormElementsShowcase from '@/showcases/forms/FormElementsShowcase'

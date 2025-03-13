@@ -52,4 +52,5 @@ const Form: FC<FormProps> = ({
   );
 };
 
-export default React.memo(Form);
+const MemoizedForm = React.memo(Form);
+export { MemoizedForm as Form };

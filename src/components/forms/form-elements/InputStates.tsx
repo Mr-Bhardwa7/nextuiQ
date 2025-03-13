@@ -1,8 +1,8 @@
 "use client";
 import React, { useState, useCallback } from "react";
 import { Card } from "@/components/ui/card";
-import Input from "@/components/forms/input";
-import Label from "@/components/forms/label";
+import {Input} from "@/components/forms/input";
+import {Label} from "@/components/forms/label";
 
 export default function InputStates() {
   const [email, setEmail] = useState("");

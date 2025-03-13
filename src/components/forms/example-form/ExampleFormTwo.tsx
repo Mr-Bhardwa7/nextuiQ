@@ -1,12 +1,12 @@
 "use client";
 import React, { useState, useCallback } from "react";
 import { Card } from "@/components/ui/card";
-import Label from "@/components/forms/label";
-import Input from "@/components/forms/input";
-import Select from "@/components/forms/select";
-import Radio from "@/components/forms/input/Radio";
-import Form from "@/components/forms/form";
-import Button from "@/components/ui/button";
+import {Label} from "@/components/forms/label";
+import {Input} from "@/components/forms/input";
+import {Select} from "@/components/forms/select";
+import {Radio} from "@/components/forms/input/Radio";
+import {Form} from "@/components/forms/form";
+import {Button} from "@/components/ui/button";
 import { FiCalendar } from "react-icons/fi";
 
 export default function ExampleFormTwo() {

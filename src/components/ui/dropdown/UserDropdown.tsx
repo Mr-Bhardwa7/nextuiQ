@@ -1,7 +1,7 @@
 import { useState, useId } from 'react';
-import Dropdown from "@/components/ui/dropdown";
-import Avatar from "@/components/ui/avatar";
-import Button from "@/components/ui/button";
+import {Dropdown} from "@/components/ui/dropdown";
+import {Avatar} from "@/components/ui/avatar";
+import {Button} from "@/components/ui/button";
 
 export interface UserData {
   name: string;
@@ -20,7 +20,7 @@ const defaultUserData: UserData = {
   avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=John"
 };
 
-const UserDropdown = ({ userData = defaultUserData, onAction }: UserDropdownProps) => {
+export const UserDropdown = ({ userData = defaultUserData, onAction }: UserDropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const menuId = useId();
 
@@ -115,5 +115,3 @@ const UserDropdown = ({ userData = defaultUserData, onAction }: UserDropdownProp
     </Dropdown>
   );
 };
-
-export default UserDropdown;

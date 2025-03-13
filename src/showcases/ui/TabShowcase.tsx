@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FiGrid, FiBell, FiBarChart2, FiUsers } from 'react-icons/fi';
-import Tabs from '@/components/ui/tabs';
+import {Tabs} from '@/components/ui/tabs';
 import { cn } from "@/lib/utils";
 
 const defaultOptions = [

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import DefaultInputs from '../DefaultInputs';
 import CheckboxComponents from '../CheckboxComponents';
-import DropZone from '../../input/DropZone';
+import {Dropzone} from '../../input/DropZone';
 import FileInputExample from '../FileInputExample';
 import InputGroup from '../InputGroup';
 import InputStates from '../InputStates';
@@ -57,7 +57,7 @@ export const Checkboxes: StoryObj = {
 };
 
 export const FileUpload: StoryObj = {
-  render: () => <DropZone />,
+  render: () => <Dropzone />,
   parameters: {
     docs: {
       description: {

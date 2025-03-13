@@ -3,9 +3,13 @@ import { Card } from "@/components/ui/card";
 import { useDropzone } from "react-dropzone";
 import { FiUploadCloud } from "react-icons/fi";
 
-const DropzoneComponent: React.FC = () => {
+interface DropzoneProps {
+  onFileUpload?: (files: File[]) => void;
+}
+
+const DropzoneComponent: React.FC<DropzoneProps> = ({ onFileUpload }) => {
   const onDrop = (acceptedFiles: File[]) => {
-    console.log("Files dropped:", acceptedFiles);
+    onFileUpload?.(acceptedFiles);
   };
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -59,4 +63,7 @@ const DropzoneComponent: React.FC = () => {
   );
 };
 
-export default DropzoneComponent;
+DropzoneComponent.displayName = "Dropzone";
+
+export const Dropzone = DropzoneComponent;
+

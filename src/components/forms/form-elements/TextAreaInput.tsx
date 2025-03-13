@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 import { Card } from "@/components/ui/card";
-import TextArea from "@/components/forms/input/TextArea";
-import Label from "@/components/forms/label";
+import {TextArea} from "@/components/forms/input/TextArea";
+import {Label} from "@/components/forms/label";
 
 export default function TextAreaInput() {
   const [message, setMessage] = useState("");

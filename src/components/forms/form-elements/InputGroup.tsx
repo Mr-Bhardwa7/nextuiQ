@@ -1,9 +1,9 @@
 
 import { useCallback } from "react";
 import { Card } from "../../ui/card";
-import Label  from "@/components/forms/label";
-import Input from "@/components/forms/input";
-import PhoneInput from "@/components/forms/input/PhoneInput";
+import {Label}  from "@/components/forms/label";
+import {Input} from "@/components/forms/input";
+import {PhoneInput} from "@/components/forms/input/PhoneInput";
 import { FiMail } from "react-icons/fi";
 
 export default function InputGroup() {

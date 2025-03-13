@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react'
 import { fileURLToPath } from 'url'
 import { dirname, resolve } from 'path'
 import tailwindcss from '@tailwindcss/vite'
+import dts from 'vite-plugin-dts'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -10,7 +11,11 @@ const __dirname = dirname(__filename)
 export default defineConfig({
   plugins: [
     react(),
-    tailwindcss()
+    tailwindcss(),
+    dts({
+      insertTypesEntry: true,
+      include: ['src/**/*'],
+    })
   ],
   resolve: {
     alias: {
@@ -20,8 +25,9 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
-      name: 'UIComponentLib',
-      fileName: 'index'
+      name: 'nextuiq',
+      formats: ['es', 'cjs'],
+      fileName: (format) => `index.${format === 'es' ? 'mjs' : 'js'}`
     },
     rollupOptions: {
       external: ['react', 'react-dom'],
@@ -29,8 +35,12 @@ export default defineConfig({
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM'
-        }
+        },
+        assetFileNames: 'styles.[ext]'
       }
-    }
+    },
+    sourcemap: true,
+    cssCodeSplit: false,
+    cssMinify: true
   }
 })

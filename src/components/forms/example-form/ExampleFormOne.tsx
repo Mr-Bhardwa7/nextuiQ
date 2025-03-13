@@ -1,11 +1,11 @@
 import React, { useState, useCallback } from "react";
 import { Card } from "@/components/ui/card";
-import Form from "@/components/forms/form";
-import Label from "@/components/forms/label";
-import Input from "@/components/forms/input";
-import Select from "@/components/forms/select";
-import TextArea from "@/components/forms/input/TextArea";
-import Button from "@/components/ui/button";
+import {Form} from "@/components/forms/form";
+import {Label} from "@/components/forms/label";
+import {Input} from "@/components/forms/input";
+import {Select} from "@/components/forms/select";
+import {TextArea} from "@/components/forms/input/TextArea";
+import {Button} from "@/components/ui/button";
 import { FiSend } from "react-icons/fi";
 
 export default function ExampleFormOne() {

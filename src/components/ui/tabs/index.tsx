@@ -14,7 +14,7 @@ export interface TabsProps {
   className?: string;
 }
 
-const Tabs: React.FC<TabsProps> = ({ 
+export const Tabs: React.FC<TabsProps> = ({ 
   options, 
   value, 
   onChange,
@@ -80,5 +80,3 @@ const Tabs: React.FC<TabsProps> = ({
     </div>
   );
 };
-
-export default Tabs;

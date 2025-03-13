@@ -1,6 +1,6 @@
-import Button from '@/components/ui/button';
+import {Button} from '@/components/ui/button';
 import {  FiArrowRight, FiDownload, FiPlus, FiTrash, FiEdit, FiSave } from 'react-icons/fi';
-import Loader from '@/components/ui/loader';
+import {Loader} from '@/components/ui/loader';
 
 const ButtonShowcase = () => {
   return (

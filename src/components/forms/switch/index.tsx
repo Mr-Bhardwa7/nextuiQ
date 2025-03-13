@@ -13,7 +13,7 @@ export interface SwitchProps {
   "aria-describedby"?: string;
 }
 
-const Switch = forwardRef<HTMLInputElement, SwitchProps>(({
+const SwitchComponent = forwardRef<HTMLInputElement, SwitchProps>(({
   label,
   defaultChecked = false,
   disabled = false,
@@ -96,6 +96,6 @@ const Switch = forwardRef<HTMLInputElement, SwitchProps>(({
   );
 });
 
-Switch.displayName = "Switch";
+SwitchComponent.displayName = "Switch";
 
-export default Switch;
+export const Switch = SwitchComponent;

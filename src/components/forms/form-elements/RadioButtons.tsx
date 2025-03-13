@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import { Card } from "@/components/ui/card";
-import Radio from "@/components/forms/input/Radio";
+import {Radio} from "@/components/forms/input/Radio";
 
 export default function RadioButtons() {
   const [selectedValue, setSelectedValue] = useState<string>("option2");
