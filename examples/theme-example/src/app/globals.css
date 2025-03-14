@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@import 'nextuiq/dist/styles.css';
+
+@theme {
+  /* Base Colors */
+  --color-primary: 210 100% 50%;
+  --color-primary-light: 210 100% 60%;
+  --color-primary-dark: 210 100% 40%;
+  
+  /* Secondary Colors */
+  --color-secondary: 280 100% 50%;
+  --color-secondary-light: 280 100% 60%;
+  --color-secondary-dark: 280 100% 40%;
+  
+  /* Accent Colors */
+  --color-accent-1: 340 100% 50%;
+  --color-accent-2: 160 100% 50%;
+  --color-accent-3: 60 100% 50%;
+  
+  /* Neutral Colors */
+  --color-gray-50: 220 13% 95%;
+  --color-gray-100: 220 13% 90%;
+  --color-gray-200: 220 13% 80%;
+  --color-gray-300: 220 13% 70%;
+  --color-gray-400: 220 13% 60%;
+  --color-gray-500: 220 13% 50%;
+  
+  /* Semantic Colors */
+  --color-success: 160 100% 40%;
+  --color-warning: 40 100% 50%;
+  --color-error: 0 100% 50%;
+  --color-info: 200 100% 50%;
+  
+  /* Background and Text */
+  --color-background: 0 0% 100%;
+  --color-text-primary: 220 13% 10%;
+  --color-text-secondary: 220 13% 45%;
+  --color-text-muted: 220 13% 65%;
+}
+
+body[data-theme="dark"] {
+  /* Invert and adjust colors for dark mode */
+  --color-primary: 210 100% 60%;
+  --color-primary-light: 210 100% 70%;
+  --color-primary-dark: 210 100% 50%;
+  
+  --color-secondary: 280 100% 60%;
+  --color-secondary-light: 280 100% 70%;
+  --color-secondary-dark: 280 100% 50%;
+  
+  /* Adjust accent colors for dark mode */
+  --color-accent-1: 340 90% 60%;
+  --color-accent-2: 160 90% 60%;
+  --color-accent-3: 60 90% 60%;
+  
+  /* Invert gray scale */
+  --color-gray-50: 220 13% 5%;
+  --color-gray-100: 220 13% 10%;
+  --color-gray-200: 220 13% 20%;
+  --color-gray-300: 220 13% 30%;
+  --color-gray-400: 220 13% 40%;
+  --color-gray-500: 220 13% 50%;
+  
+  /* Adjust semantic colors */
+  --color-success: 160 90% 50%;
+  --color-warning: 40 90% 60%;
+  --color-error: 0 90% 60%;
+  --color-info: 200 90% 60%;
+  
+  /* Dark theme background and text */
+  --color-background: 220 10% 10%;
+  --color-text-primary: 220 13% 95%;
+  --color-text-secondary: 220 13% 75%;
+  --color-text-muted: 220 13% 55%;
+}
+
+body {
+  @apply bg-[hsl(var(--color-background))] text-[hsl(var(--color-text-primary))] min-h-screen;
+}
+
+.text-secondary {
+  @apply text-[hsl(var(--color-text-secondary))];
+}
+
+.text-muted {
+  @apply text-[hsl(var(--color-text-muted))];
+}
+
+* {
+  @apply transition-colors duration-300;
+}

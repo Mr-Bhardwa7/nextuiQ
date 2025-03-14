@@ -6,12 +6,17 @@ export const ThemeToggle = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="relative flex items-center justify-center h-10 w-10 rounded-full border border-slate-200 bg-white text-slate-500 transition-colors hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
+      className="relative flex items-center justify-center h-10 w-10 rounded-full 
+        bg-[hsl(var(--color-background))] 
+        text-[hsl(var(--color-text-secondary))]
+        hover:bg-[hsl(var(--color-muted))]
+        border border-[hsl(var(--color-text-muted))]
+        transition-colors duration-300"
       aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
     >
       {/* Sun icon */}
       <svg
-        className="h-5 w-5 dark:hidden"
+        className={`h-5 w-5 ${theme === 'dark' ? 'hidden' : 'block'}`}
         width="20"
         height="20"
         viewBox="0 0 20 20"
@@ -27,7 +32,7 @@ export const ThemeToggle = () => {
       </svg>
       {/* Moon icon */}
       <svg
-        className="hidden h-5 w-5 dark:block"
+        className={`h-5 w-5 ${theme === 'light' ? 'hidden' : 'block'}`}
         width="20"
         height="20"
         viewBox="0 0 20 20"
