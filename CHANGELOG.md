@@ -2,7 +2,36 @@
 
 All notable changes to NextuiQ will be documented in this file.
 
-## [0.1.1] - 2025-03-14
+## [0.1.2] - 2024-03-14
+
+### Added
+
+- Theme example project showcasing theme implementation
+- Enhanced theme context with system preference detection  
+- CSS variable-based theming system
+- Color palette customization support
+- Smooth theme transitions
+- New ThemeToggle component with CSS variable support
+
+### Changed
+
+- Updated ThemeContext to use CSS variables
+- Improved theme toggle functionality
+- Enhanced theme persistence with localStorage
+- Updated package dependencies
+- Refactored ThemeToggle component to use theme CSS variables
+- Enhanced ThemeToggle styling with semantic color tokens
+
+### Documentation
+
+- Added theme implementation example
+- Created theme customization guide
+- Added example project setup instructions
+- Added ThemeToggle component usage documentation
+
+[0.1.2]: https://github.com/t7ean/nextuiq/releases/tag/v0.1.2
+
+## [0.1.1] - 2025-03-13
 
 ### Changed
 

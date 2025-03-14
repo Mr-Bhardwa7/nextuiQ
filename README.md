@@ -58,33 +58,58 @@ You can install NextuiQ via npm or yarn:
 
 NextUIQ supports both light and dark modes out of the box. To enable dark mode:
 
-1. Add the following to your global CSS:
+1.  Wrap your application in the `ThemeProvider`:
+    ```tsx
+    import { ThemeProvider } from "nextuiq";
 
-   ```css
-   @import "nextuiq/dist/styles.css";
+    function App({ children }) {
+      return <ThemeProvider>{children}</ThemeProvider>;
+    }
+    ```
+2.  Add the following to your global CSS:
 
-   :root {
-     color-scheme: light;
-   }
+    ```css
+    /* Import NextUIQ styles */
+    @import "nextuiq/dist/styles.css";
 
-   .dark {
-     color-scheme: dark;
-   }
-   ```
+    /* Define custom theme variables */
+    @theme {
+      /* Base Colors */
+      --color-primary: 210 100% 50%;
+      --color-secondary: 220 100% 50%;
+      --color-background: 0 0% 100%;
+      --color-text-primary: 220 13% 10%;
+      --color-text-secondary: 220 13% 45%;
+      --color-text-muted: 220 13% 65%;
+    }
 
-2. Wrap your app with the ThemeProvider:
+    /* Dark Theme Overrides */
+    body[data-theme="dark"] {
+      --color-background: 220 10% 10%;
+      --color-text-primary: 220 13% 95%;
+      --color-text-secondary: 220 13% 75%;
+      --color-text-muted: 220 13% 55%;
+    }
+    ```
 
-   ```tsx
-   import { ThemeProvider } from "nextuiq";
+3.  Using the Theme in Components:
+    To apply the theme in your components, you can use the theme variables like this:
 
-   function App({ children }) {
-     return (
-       <ThemeProvider>
-         {children}
-       </ThemeProvider>
-     );
-   }-
-   ```
+    ```tsx
+    function MyComponent() {
+      const { theme, toggleTheme } = useTheme();
+
+      return (
+        <div className="bg-[hsl(var(--color-background))]">
+          <h1 className="text-[hsl(var(--color-text-primary))]">Hello World</h1>
+          <button onClick={toggleTheme}>Toggle Theme</button>
+        </div>
+      );
+    }
+    ```
+
+        This setup allows you to customize the theme and switch between light and dark modes dynamically.
+        For a complete example, check out the [theme example](https://github.com/Mr-Bhardwa7/nextuiQ/tree/master/example/theme-example) project .
 
 ## 🔧 Customization
 
