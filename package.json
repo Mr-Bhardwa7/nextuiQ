@@ -1,13 +1,55 @@
 {
   "name": "nextuiq",
+  "version": "0.1.3-beta.0",
+  "description": "NextUIQ is a modern, lightweight, and developer-friendly UI component library for React and Next.js. Built with TypeScript and Tailwind CSS, it offers customizable, accessible, and performance-optimized components with built-in dark mode, theme customization, and semantic color tokens. Designed for seamless integration in modern web applications.",
+  "homepage": "https://github.com/Mr-Bhardwa7/nextuiq#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mr-Bhardwa7/nextuiq.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Mr-Bhardwa7/nextuiq/issues"
+  },
+  "author": {
+    "name": "Animesh Bhardwaj",
+    "url": "https://github.com/Mr-Bhardwa7"
+  },
+  "license": "MIT",
   "private": false,
-  "version": "0.1.3",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "files": [
-    "dist"
+  "files": ["dist"],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "nextuiq",
+    "ui component library",
+    "next.js components",
+    "react ui library",
+    "tailwindcss ui",
+    "modern ui",
+    "accessible components",
+    "typescript components",
+    "dark mode",
+    "theme customization",
+    "semantic color tokens",
+    "css variables",
+    "responsive design",
+    "storybook components",
+    "design system",
+    "developer-friendly",
+    "prebuilt ui components",
+    "performance optimized",
+    "open source ui",
+    "component-based design",
+    "react components",
+    "next.js ui framework",
+    "headless ui",
+    "tailwind ui",
+    "frontend framework"
   ],
   "scripts": {
     "dev": "vite",
@@ -59,8 +101,6 @@
     "vitest": "^3.0.8"
   },
   "eslintConfig": {
-    "extends": [
-      "plugin:storybook/recommended"
-    ]
+    "extends": ["plugin:storybook/recommended"]
   }
 }

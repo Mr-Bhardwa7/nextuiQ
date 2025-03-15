@@ -1,192 +1,225 @@
-# NextuiQ - UI Component Library
+# NextuiQ - UI Component Library 🚀
 
-Made with ❤️ using TypeScript & Tailwind CSS.
+Made with ❤️ using **TypeScript** & **Tailwind CSS**.
 
-[![npm version](https://badge.fury.io/js/nextuiq.svg)](https://www.npmjs.com/package/nextuiq) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![GitHub Stars](https://img.shields.io/github/stars/Mr-Bhardwa7/nextuiQ?style=social)](https://github.com/Mr-Bhardwa7/nextuiQ)
-[![TypeScript](https://img.shields.io/badge/TypeScript-4.9.5-blue.svg)](https://www.typescriptlang.org/) [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v3.3-38B2AC.svg)](https://tailwindcss.com/) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/t7ean/nextuiq/blob/main/CONTRIBUTING.md)
+[![npm version](https://badge.fury.io/js/nextuiq.svg)](https://www.npmjs.com/package/nextuiq)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub Stars](https://img.shields.io/github/stars/Mr-Bhardwa7/nextuiQ?style=social)](https://github.com/Mr-Bhardwa7/nextuiQ)
+[![TypeScript](https://img.shields.io/badge/TypeScript-~5.7.2-blue.svg)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-^4.0.12-38B2AC.svg)](https://tailwindcss.com/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Mr-Bhardwa7/nextuiq/blob/main/CONTRIBUTING.md)
 
-**NextUIQ** is a modern, lightweight UI component library built for rapid development. It is designed with **TypeScript** and **Tailwind CSS**, offering prebuilt, customizable components that help developers build sleek and responsive user interfaces efficiently.
+### ✨ Modern, Lightweight UI Library
 
-## Demo
+**NextuiQ** is a **fast**, **accessible**, and **fully customizable** UI component library designed for **Next.js** and **React**. With built-in support for **dark mode**, **accessibility**, and **semantic theming**, NextuiQ helps you build modern UIs effortlessly.
 
-- **Storybook**: [View Storybook Documentation](https://nextuiq.vercel.app)
+## 🚀 Features
 
-## Features
+- 🎨 **Modern Design** – A consistent UI system
+- 🌗 **Dark Mode** – Out-of-the-box support
+- ♿ **Accessibility** – WAI-ARIA compliant (ongoing improvements)
+- 📱 **Responsive Design** – Fully optimized for mobile & desktop
+- 🎯 **TypeScript Support** – Ensures type safety
+- ⚡ **Performance Optimized** – Minimal bundle size
+- 🔌 **Next.js & React Friendly** – Seamless integration
+- 🎨 **Theming & Customization** – Easy to style with Tailwind CSS
+- 📚 **Comprehensive Documentation** – With interactive examples
 
-- 🎨 Modern design system with consistent UI
-- 🌗 Dark mode support out of the box
-- ♿ Accessibility features following WAI-ARIA guidelines (light implementation, ongoing improvements)
-- 📱 Responsive design ensuring mobile-friendliness
-- 🎯 TypeScript support for type safety
-- 🎨 Tailwind CSS for easy styling and theme customization
-- 📚 Comprehensive documentation with examples
-- ⚡ Optimized for performance with minimal bundle size
-- 🔌 Seamless integration with Next.js and React projects
-- 🛠️ Built-in support for theming and customization
+## 📺 Demo
 
-## Installation
+- **Storybook**: [View Component Library](https://nextuiq.vercel.app)
 
-You can install NextuiQ via npm or yarn:
+## 📦 Installation
 
-## 📚 Quick Start
+Install NextUIQ using **npm** or **yarn**:
 
-1. Install the package:
-
-   ```bash
-   npm install nextuiq
-   ```
-
-2. Import the styles in your global CSS file:
-
-   ```bash
-   @import 'nextuiq/dist/styles.css';
-   ```
-
-3. Use components in your Next.js or React application:
-
-   ```tsx
-   import { Button } from "nextuiq";
-
-   const MyComponent = () => {
-     return <Button variant="primary">Click Me</Button>;
-   };
-
-   export default MyComponent;
-   ```
-
-## 🎨 Styling and Theming
-
-NextUIQ supports both light and dark modes out of the box. To enable dark mode:
-
-1.  Wrap your application in the `ThemeProvider`:
-    ```tsx
-    import { ThemeProvider } from "nextuiq";
-
-    function App({ children }) {
-      return <ThemeProvider>{children}</ThemeProvider>;
-    }
-    ```
-2.  Add the following to your global CSS:
-
-    ```css
-    /* Import NextUIQ styles */
-    @import "nextuiq/dist/styles.css";
-
-    /* Define custom theme variables */
-    @theme {
-      /* Base Colors */
-      --color-primary: 210 100% 50%;
-      --color-secondary: 220 100% 50%;
-      --color-background: 0 0% 100%;
-      --color-text-primary: 220 13% 10%;
-      --color-text-secondary: 220 13% 45%;
-      --color-text-muted: 220 13% 65%;
-    }
-
-    /* Dark Theme Overrides */
-    body[data-theme="dark"] {
-      --color-background: 220 10% 10%;
-      --color-text-primary: 220 13% 95%;
-      --color-text-secondary: 220 13% 75%;
-      --color-text-muted: 220 13% 55%;
-    }
-    ```
-
-3.  Using the Theme in Components:
-    To apply the theme in your components, you can use the theme variables like this:
-
-    ```tsx
-    function MyComponent() {
-      const { theme, toggleTheme } = useTheme();
-
-      return (
-        <div className="bg-[hsl(var(--color-background))]">
-          <h1 className="text-[hsl(var(--color-text-primary))]">Hello World</h1>
-          <button onClick={toggleTheme}>Toggle Theme</button>
-        </div>
-      );
-    }
-    ```
-
-        This setup allows you to customize the theme and switch between light and dark modes dynamically.
-        For a complete example, check out the [theme example](https://github.com/Mr-Bhardwa7/nextuiQ/tree/master/example/theme-example) project .
-
-## 🔧 Customization
-
-Since NextUIQ is built with Tailwind CSS, you can easily extend and override styles using Tailwind utility classes:
-
-```tsx
-<Button className="bg-green-500 hover:bg-green-600">Custom Button</Button>
+```bash
+npm install nextuiq
+# or
+yarn add nextuiq
 ```
 
-## Available Components
+## 🏁 Quick Start
 
-- **Base Components:**
-  - Button
-  - Card
-  - Badge
-  - Avatar
-- **Forms:**
-  - Input
-  - Select
-  - Checkbox
-  - Radio
-  - Toggle Switch
-  - Phone Input
-  - File Input
-  - Dropbox Input
-- **Navigation:**
-  - Breadcrumb
-  - Tabs
-  - Dropdown
-- **Overlays:**
-  - Modal
-  - Popover
-- **Data Display:**
-  - Table
-  - Alert
-  - Loader
+### 1️⃣ Import Styles
 
-## Development
+Add the following import to your global CSS file:
 
-If you want to contribute or modify the library, follow these steps:
+```css
+@import "nextuiq/dist/styles.css";
+```
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Mr-Bhardwa7/nextuiQ.git
-   cd nextuiQ
-   ```
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
-4. Run Storybook for component testing:
-   ```bash
-   npm run storybook
-   ```
+### 2️⃣ Use Components
 
-## Contribution
+Example usage in a **Next.js/React** project:
 
-We welcome contributions! If you'd like to contribute, please follow these steps:
+```tsx
+import { Button } from "nextuiq";
 
-1. Fork the repository.
-2. Create a new bug/feature branch.
-3. Make your changes and commit them with clear messages.  
-   Follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification to ensure consistency and clarity in commit history.
-4. Submit a pull request with a detailed description of your changes.
+const MyComponent = () => {
+  return <Button variant="primary">Click Me</Button>;
+};
 
-## License
+export default MyComponent;
+```
 
-MIT © Animesh Bhardwaj
+## 🎨 Theming & Customization
 
-## Support & Community
+NextUIQ supports **light** and **dark** themes out of the box. You can customize the theme using CSS variables:
 
-- **Documentation**: [Read the Docs](https://nextuiq-docs.vercel.app)
-- **GitHub Issues**: [Report a Bug](https://github.com/Mr-Bhardwa7/nextuiQ/issues)
-- **Community**: Join our Discord for discussions and support.
+### 1️⃣ Enable Dark Mode
 
-We appreciate your feedback and contributions to improve NextUIQ!
+Wrap your application with the `ThemeProvider`:
+
+```tsx
+import { ThemeProvider } from "nextuiq";
+
+function App({ children }) {
+  return <ThemeProvider>{children}</ThemeProvider>;
+}
+```
+
+### 2️⃣ Customize Theme Colors
+
+NextUIQ uses **OKLCH color format** for better accessibility:
+
+```css
+@theme {
+  --theme-primary: 0.546 0.245 262.881;
+  --theme-secondary: 0.541 0.281 293.009;
+  --theme-background: 1 0 0;
+  --theme-foreground: 0.208 0.042 265.755;
+}
+
+[data-theme="dark"] {
+  --theme-background: 0.129 0.042 264.695;
+  --theme-foreground: 0.984 0.003 247.858;
+}
+```
+
+### 3️⃣ Apply Theme in Components
+
+```tsx
+function MyComponent() {
+  const { theme, toggleTheme } = useTheme();
+
+  return (
+    <div className="bg-[oklch(var(--theme-muted))] p-4 rounded-lg">
+      <h1 className="text-[oklch(var(--theme-foreground))] text-xl font-semibold mb-4">
+        Current Theme: {theme}
+      </h1>
+      <Button
+        variant="primary"
+        onClick={toggleTheme}
+        className="flex items-center gap-2"
+      >
+        {theme === "dark" ? "🌞" : "🌙"} Switch to{" "}
+        {theme === "dark" ? "Light" : "Dark"} Mode
+      </Button>
+    </div>
+  );
+}
+```
+
+➡️ **[Full Theming Guide](https://github.com/Mr-Bhardwa7/nextuiQ/tree/master/example/theme-example)**
+
+## 🛠️ Available Components
+
+### 📌 Base Components
+
+- Button
+- Link
+- Card
+- Badge
+- Avatar
+
+### 🔢 Forms
+
+- Input
+- Select
+- Multiselect
+- Searchable select
+- Checkbox
+- Radio
+- Toggle Switch
+- Phone Input
+- File Input
+- Dropbox Input
+
+### 🧭 Navigation
+
+- Breadcrumb
+- Tabs
+- Dropdown
+
+### 🏗 Overlays
+
+- Modal
+- Popover
+
+### 📊 Data Display
+
+- Table
+- Alert
+- Loader
+- Responsive Image
+- Grid
+
+## 🛠 Development & Contribution
+
+Want to contribute? Follow these steps:
+
+1️⃣ **Clone the repository**
+
+```bash
+git clone https://github.com/Mr-Bhardwa7/nextuiQ.git
+cd nextuiQ
+```
+
+2️⃣ **Install dependencies**
+
+```bash
+npm install
+```
+
+3️⃣ **Start the development server**
+
+```bash
+npm run dev
+```
+
+4️⃣ **Run Storybook for component testing**
+
+```bash
+npm run storybook
+```
+
+### 📌 Contribution Guidelines
+
+- Fork the repo & create a new branch
+- Follow [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit messages
+- Open a **Pull Request (PR)** with a detailed description
+
+## 📜 License
+
+[MIT License](https://opensource.org/licenses/MIT) © Animesh Bhardwaj
+
+## 🤝 Community & Support
+
+Join the **NextuiQ** community to get help, report issues, and contribute!
+
+### 📖 Documentation
+
+Find everything you need to get started and use **NextuiQ** effectively:
+
+- 📘 **Getting Started** – [README.md](https://github.com/Mr-Bhardwa7/nextuiQ/blob/main/README.md)
+- 📜 **Changelog** – [CHANGELOG.md](https://github.com/Mr-Bhardwa7/nextuiQ/blob/main/CHANGELOG.md)
+- 📖 **Storybook** – [View Components](https://nextuiq-docs.vercel.app)
+
+### 💬 Community & Support
+
+- 🐞 **Report Issues** – Found a bug or need a feature? [GitHub Issues](https://github.com/Mr-Bhardwa7/nextuiQ/issues)
+- 🚀 **Contribute** – Help improve NextuiQ by submitting issues, pull requests, and feedback.
+- 💬 **Community Chat** – Connect with other developers, ask questions, and get support: [Join our Discord](#) _(Coming soon!)_
+
+\_We’d love to hear your feedback and ideas to make NextuiQ even better! 💡

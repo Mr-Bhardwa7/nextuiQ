@@ -453,7 +453,7 @@
     --theme-foreground: 0.984 0.003 247.858;
     /* slate-50 */
 
---theme-muted: 0.279 0.041 260.031;
+    --theme-muted: 0.279 0.041 260.031;
     /* slate-800 */
     --theme-muted-foreground: 0.704 0.04 256.788;
     /* slate-400 */
