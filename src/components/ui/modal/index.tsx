@@ -79,28 +79,27 @@ export const Modal = ({
       className={cn(
         "fixed inset-0 flex justify-center",
         positionClasses[position],
-        "overflow-y-auto z-[100]",
+        "overflow-y-auto z-50",
         "animate-in fade-in duration-200"
       )}
       role="presentation"
     >
       <div
-        className="fixed inset-0 bg-black/20 dark:bg-black/40 backdrop-blur-sm transition-opacity"
+        className="fixed inset-0 bg-[oklch(var(--theme-background)/0.8)] backdrop-blur-sm transition-opacity"
         onClick={onClose}
         aria-hidden="true"
       />
       <div
         ref={modalRef}
         className={cn(
-          "relative w-full",
+          "relative w-full m-4",
           !isFullscreen && [
             sizeClasses[size],
-            "rounded-2xl bg-white dark:bg-slate-900",
-            "shadow-[0_0_1rem_0.25rem_rgba(0,0,0,0.04)]",
-            "dark:shadow-[0_0_1rem_0.25rem_rgba(0,0,0,0.25)]",
-            "border border-slate-200/50 dark:border-slate-700/50"
+            "rounded-lg bg-[oklch(var(--theme-background))]",
+            "shadow-lg",
+            "border border-[oklch(var(--theme-border))]"
           ],
-          isFullscreen && "w-full h-full bg-white dark:bg-slate-900",
+          isFullscreen && "w-full h-full bg-[oklch(var(--theme-background))]",
           "animate-in zoom-in-95 duration-200",
           className
         )}
@@ -115,10 +114,9 @@ export const Modal = ({
           <button
             onClick={onClose}
             className={cn(
-              "absolute right-4 top-4 z-10 rounded-full p-2",
-              "text-slate-500 hover:text-slate-700 hover:bg-slate-100",
-              "dark:text-slate-400 dark:hover:text-slate-300 dark:hover:bg-slate-800",
-              "transition-colors"
+              "absolute right-4 top-4 z-10 rounded-sm p-2",
+              "text-[oklch(var(--theme-muted-foreground))] hover:text-[oklch(var(--theme-foreground))]",
+              "transition-colors hover:bg-[oklch(var(--theme-muted))]"
             )}
             aria-label="Close modal"
           >
@@ -127,12 +125,12 @@ export const Modal = ({
         )}
         <div className="p-6">
           {title && (
-            <h2 id="modal-title" className="text-xl font-semibold mb-2">
+            <h2 id="modal-title" className="text-xl font-semibold mb-2 text-[oklch(var(--theme-foreground))]">
               {title}
             </h2>
           )}
           {description && (
-            <p id="modal-description" className="text-slate-500 dark:text-slate-400 mb-4">
+            <p id="modal-description" className="text-[oklch(var(--theme-muted-foreground))] mb-4">
               {description}
             </p>
           )}

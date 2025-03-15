@@ -17,10 +17,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, className }) => {
       className={cn("flex", className)} 
       aria-label="Breadcrumb"
     >
-      <ol 
-        className="flex items-center gap-2"
-        role="list"
-      >
+      <ol className="flex items-center gap-2" role="list">
         {items.map((item, index) => (
           <li 
             key={index} 
@@ -31,21 +28,21 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, className }) => {
               <>
                 <a
                   href={item.href}
-                  className="text-sm text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200"
+                  className="text-sm text-[oklch(var(--theme-muted-foreground))] hover:text-[oklch(var(--theme-foreground))]"
                   aria-label={`Go to ${item.label}`}
                 >
                   {item.label}
                 </a>
                 {index < items.length - 1 && (
                   <ChevronIcon 
-                    className="mx-2 h-4 w-4 text-slate-400 dark:text-slate-500" 
+                    className="mx-2 h-4 w-4 text-[oklch(var(--theme-muted-foreground))]" 
                     aria-hidden="true"
                   />
                 )}
               </>
             ) : (
               <span 
-                className="text-sm font-medium text-slate-800 dark:text-slate-200"
+                className="text-sm font-medium text-[oklch(var(--theme-foreground))]"
                 aria-current="page"
               >
                 {item.label}

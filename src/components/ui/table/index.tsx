@@ -28,7 +28,7 @@ const TableHeader = React.forwardRef<
   HTMLTableSectionElement,
   React.HTMLAttributes<HTMLTableSectionElement>
 >(({ className, ...props }, ref) => (
-  <thead ref={ref} className={cn("bg-slate-50 dark:bg-slate-800", className)} {...props} />
+  <thead ref={ref} className={cn("[&_tr]:border-b", className)} {...props} />
 ));
 TableHeader.displayName = "TableHeader";
 
@@ -36,7 +36,11 @@ const TableBody = React.forwardRef<
   HTMLTableSectionElement,
   React.HTMLAttributes<HTMLTableSectionElement>
 >(({ className, ...props }, ref) => (
-  <tbody ref={ref} className={cn("", className)} {...props} />
+  <tbody 
+    ref={ref} 
+    className={cn("[&_tr:last-child]:border-0", className)} 
+    {...props} 
+  />
 ));
 TableBody.displayName = "TableBody";
 
@@ -47,7 +51,7 @@ const TableRow = React.forwardRef<
   <tr
     ref={ref}
     className={cn(
-      "border-b border-slate-200 dark:border-slate-700 transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/50",
+      "border-b transition-colors hover:bg-[oklch(var(--theme-muted)/0.5)] data-[state=selected]:bg-[oklch(var(--theme-muted))]",
       className
     )}
     {...props}
@@ -62,7 +66,8 @@ const TableHead = React.forwardRef<
   <th
     ref={ref}
     className={cn(
-      "h-12 px-4 text-left align-middle font-medium text-slate-500 dark:text-slate-400",
+      "h-12 px-4 text-left align-middle font-medium text-[oklch(var(--theme-muted-foreground))]",
+      "[&:has([role=checkbox])]:pr-0",
       className
     )}
     {...props}
@@ -76,7 +81,11 @@ const TableCell = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <td
     ref={ref}
-    className={cn("p-4 align-middle text-slate-700 dark:text-slate-300", className)}
+    className={cn(
+      "p-4 align-middle [&:has([role=checkbox])]:pr-0",
+      "text-[oklch(var(--theme-foreground))]",
+      className
+    )}
     {...props}
   />
 ));

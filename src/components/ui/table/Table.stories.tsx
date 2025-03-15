@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from './index';
 import { FiCheck, FiX, FiAlertCircle } from 'react-icons/fi';
-import { TableFilter } from './TableFilter';
-import { TablePagination } from './TablePagination';
-import { useTable } from '@/hooks/useTable';
+import { cn } from '@/lib/utils';
+import { useState, useCallback } from 'react';
+import { FiChevronDown, FiChevronUp, FiFilter, FiSearch } from 'react-icons/fi';
 
 interface TableItem {
   id: number;
@@ -13,6 +13,14 @@ interface TableItem {
   status: string;
   priority: string;
 }
+
+interface ComplexTableItem extends TableItem {
+  lastActive: string;
+  projects: number;
+  tasks: number;
+  progress: number;
+}
+
 
 const sampleData: TableItem[] = [
   { 
@@ -41,13 +49,20 @@ const sampleData: TableItem[] = [
   },
 ];
 
-const extendedSampleData: TableItem[] = [
-  ...sampleData,
-  { id: 4, name: 'Alice Williams', email: 'alice@example.com', role: 'User', status: 'Active', priority: 'Medium' },
-  { id: 5, name: 'Charlie Brown', email: 'charlie@example.com', role: 'Editor', status: 'Inactive', priority: 'Low' },
-  { id: 6, name: 'Diana Miller', email: 'diana@example.com', role: 'Admin', status: 'Active', priority: 'High' },
-  { id: 7, name: 'Edward Davis', email: 'edward@example.com', role: 'User', status: 'Active', priority: 'Medium' },
-  { id: 8, name: 'Fiona Clark', email: 'fiona@example.com', role: 'Editor', status: 'Inactive', priority: 'Low' },
+const complexData: ComplexTableItem[] = [
+  {
+    id: 1,
+    name: 'John Doe',
+    email: 'john@example.com',
+    role: 'Admin',
+    status: 'Active',
+    priority: 'High',
+    lastActive: '2 hours ago',
+    projects: 8,
+    tasks: 24,
+    progress: 75
+  },
+  // ... add more items
 ];
 
 const meta: Meta<typeof Table> = {
@@ -56,16 +71,12 @@ const meta: Meta<typeof Table> = {
   parameters: {
     layout: 'padded',
     backgrounds: {
-      default: 'light',
-      values: [
-        { name: 'light', value: '#f8fafc' },
-        { name: 'dark', value: '#0f172a' },
-      ],
+      default: 'surface',
     },
   },
   decorators: [
     (Story) => (
-      <div className="p-4 bg-white dark:bg-slate-900">
+      <div className="p-4 bg-[oklch(var(--theme-background))]">
         <Story />
       </div>
     ),
@@ -85,50 +96,67 @@ const TableContent = ({ data }: { data: TableItem[] }) => (
         <TableHead>Role</TableHead>
         <TableHead>Status</TableHead>
         <TableHead>Priority</TableHead>
+        <TableHead>Actions</TableHead>
       </TableRow>
     </TableHeader>
     <TableBody>
       {data.length > 0 ? (
         data.map((item) => (
           <TableRow key={item.id}>
-            <TableCell className="font-medium text-slate-900 dark:text-white">
+            <TableCell className="font-medium text-[oklch(var(--theme-foreground))]">
               {item.name}
             </TableCell>
-            <TableCell className="text-slate-600 dark:text-slate-300">
+            <TableCell className="text-[oklch(var(--theme-muted-foreground))]">
               {item.email}
             </TableCell>
             <TableCell>
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-300">
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[oklch(var(--theme-muted))] text-[oklch(var(--theme-muted-foreground))]">
                 {item.role}
               </span>
             </TableCell>
             <TableCell>
-              <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium ${
+              <span className={cn(
+                "inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium",
                 item.status === 'Active' 
-                  ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400'
-                  : 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400'
-              }`}>
+                  ? "bg-[oklch(var(--theme-success)/0.1)] text-[oklch(var(--theme-success))]"
+                  : "bg-[oklch(var(--theme-destructive)/0.1)] text-[oklch(var(--theme-destructive))]"
+              )}>
                 {item.status === 'Active' ? <FiCheck className="h-3 w-3" /> : <FiX className="h-3 w-3" />}
                 {item.status}
               </span>
             </TableCell>
             <TableCell>
-              <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                item.priority === 'High' 
-                  ? 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400'
-                  : item.priority === 'Medium'
-                  ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400'
-                  : 'bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-300'
-              }`}>
+              <span className={cn(
+                "inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium",
+                {
+                  'High': "bg-[oklch(var(--theme-warning)/0.1)] text-[oklch(var(--theme-warning))]",
+                  'Medium': "bg-[oklch(var(--theme-info)/0.1)] text-[oklch(var(--theme-info))]",
+                  'Low': "bg-[oklch(var(--theme-muted)/0.1)] text-[oklch(var(--theme-muted-foreground))]"
+                }[item.priority]
+              )}>
                 <FiAlertCircle className="h-3 w-3" />
                 {item.priority}
               </span>
+            </TableCell>
+            <TableCell>
+              <div className="flex items-center gap-2">
+                <button className="p-2 rounded-md hover:bg-[oklch(var(--theme-muted))] text-[oklch(var(--theme-muted-foreground))]">
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                  </svg>
+                </button>
+                <button className="p-2 rounded-md hover:bg-[oklch(var(--theme-muted))] text-[oklch(var(--theme-muted-foreground))]">
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                  </svg>
+                </button>
+              </div>
             </TableCell>
           </TableRow>
         ))
       ) : (
         <TableRow>
-          <TableCell colSpan={5} className="text-center py-8 text-slate-500 dark:text-slate-400">
+          <TableCell colSpan={6} className="text-center py-8 text-[oklch(var(--theme-muted-foreground))]">
             No results found
           </TableCell>
         </TableRow>
@@ -137,104 +165,120 @@ const TableContent = ({ data }: { data: TableItem[] }) => (
   </Table>
 );
 
+// Update the container styling for all stories
 export const Default: Story = {
   render: () => (
-    <div className="rounded-lg border border-slate-200 dark:border-slate-700">
+    <div className="rounded-lg border border-[oklch(var(--theme-border))] bg-[oklch(var(--theme-background))]">
       <TableContent data={sampleData} />
     </div>
   ),
 };
 
-export const Striped: Story = {
-  render: () => (
-    <div className="rounded-lg border border-slate-200 dark:border-slate-700">
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>Name</TableHead>
-            <TableHead>Email</TableHead>
-            <TableHead>Role</TableHead>
-            <TableHead>Status</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {sampleData.map((item, index) => (
-            <TableRow 
-              key={item.id}
-              className={index % 2 === 0 ? 'bg-slate-50/50 dark:bg-slate-800/50' : ''}
-            >
-              <TableCell className="font-medium text-slate-900 dark:text-white">
-                {item.name}
-              </TableCell>
-              <TableCell className="text-slate-600 dark:text-slate-300">
-                {item.email}
-              </TableCell>
-              <TableCell>
-                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-300">
-                  {item.role}
-                </span>
-              </TableCell>
-              <TableCell>
-                <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                  item.status === 'Active' 
-                    ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400'
-                    : 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400'
-                }`}>
-                  {item.status === 'Active' ? <FiCheck className="h-3 w-3" /> : <FiX className="h-3 w-3" />}
-                  {item.status}
-                </span>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </div>
-  ),
-};
-
-export const PaginatedTable: Story = {
+export const DataTable: Story = {
   render: () => {
-    const {
-      searchTerm,
-      setSearchTerm,
-      statusFilter,
-      setStatusFilter,
-      roleFilter,
-      setRoleFilter,
-      currentPage,
-      setCurrentPage,
-      paginatedData,
-      totalPages,
-      startIndex,
-      endIndex,
-      totalItems,
-    } = useTable<TableItem>({
-      data: extendedSampleData,
-      searchFields: ['name', 'email'],
+    const [sortField, setSortField] = useState<keyof ComplexTableItem>('name');
+    const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
+    const [filter, setFilter] = useState('');
+
+    const handleSort = useCallback((field: keyof ComplexTableItem) => {
+      if (field === sortField) {
+        setSortDirection(prev => prev === 'asc' ? 'desc' : 'asc');
+      } else {
+        setSortField(field);
+        setSortDirection('asc');
+      }
+    }, [sortField]);
+
+    const filteredData = complexData.filter(item =>
+      Object.values(item).some(val => 
+        val.toString().toLowerCase().includes(filter.toLowerCase())
+      )
+    );
+
+    const sortedData = [...filteredData].sort((a, b) => {
+      const aVal = a[sortField];
+      const bVal = b[sortField];
+      return sortDirection === 'asc' 
+        ? aVal > bVal ? 1 : -1
+        : aVal < bVal ? 1 : -1;
     });
 
     return (
-      <div className="rounded-lg border border-slate-200 dark:border-slate-700">
-        <TableFilter
-          searchTerm={searchTerm}
-          onSearchChange={setSearchTerm}
-          statusFilter={statusFilter}
-          onStatusChange={setStatusFilter}
-          roleFilter={roleFilter}
-          onRoleChange={setRoleFilter}
-          totalResults={extendedSampleData.length}
-          filteredResults={totalItems}
-        />
-        <TableContent data={paginatedData} />
-        <TablePagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          startIndex={startIndex}
-          endIndex={endIndex}
-          totalItems={totalItems}
-          onPageChange={setCurrentPage}
-        />
+      <div className="space-y-4">
+        <div className="flex items-center gap-4 p-4 border-b border-[oklch(var(--theme-border))]">
+          <div className="relative flex-1">
+            <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-[oklch(var(--theme-muted-foreground))]" />
+            <input
+              type="text"
+              placeholder="Search..."
+              value={filter}
+              onChange={(e) => setFilter(e.target.value)}
+              className="w-full pl-10 pr-4 py-2 rounded-md border border-[oklch(var(--theme-border))] bg-[oklch(var(--theme-background))]"
+            />
+          </div>
+          <button className="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-[oklch(var(--theme-border))] hover:bg-[oklch(var(--theme-muted))]">
+            <FiFilter className="h-4 w-4" />
+            Filter
+          </button>
+        </div>
+
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead 
+                onClick={() => handleSort('name')}
+                className="cursor-pointer hover:bg-[oklch(var(--theme-muted)/0.5)]"
+              >
+                Name {sortField === 'name' && (
+                  sortDirection === 'asc' ? <FiChevronUp className="inline" /> : <FiChevronDown className="inline" />
+                )}
+              </TableHead>
+              <TableHead>Progress</TableHead>
+              <TableHead>Projects</TableHead>
+              <TableHead>Tasks</TableHead>
+              <TableHead>Status</TableHead>
+              <TableHead>Last Active</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {sortedData.map((item) => (
+              <TableRow key={item.id}>
+                <TableCell className="font-medium">
+                  <div>
+                    <div className="text-[oklch(var(--theme-foreground))]">{item.name}</div>
+                    <div className="text-sm text-[oklch(var(--theme-muted-foreground))]">{item.email}</div>
+                  </div>
+                </TableCell>
+                <TableCell>
+                  <div className="w-full h-2 bg-[oklch(var(--theme-muted))] rounded-full overflow-hidden">
+                    <div 
+                      className="h-full bg-[oklch(var(--theme-primary))]" 
+                      style={{ width: `${item.progress}%` }}
+                    />
+                  </div>
+                  <span className="text-xs text-[oklch(var(--theme-muted-foreground))]">{item.progress}%</span>
+                </TableCell>
+                <TableCell className="text-center font-medium">{item.projects}</TableCell>
+                <TableCell className="text-center font-medium">{item.tasks}</TableCell>
+                <TableCell>
+                  <span className={cn(
+                    "inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium",
+                    item.status === 'Active' 
+                      ? "bg-[oklch(var(--theme-success)/0.1)] text-[oklch(var(--theme-success))]"
+                      : "bg-[oklch(var(--theme-destructive)/0.1)] text-[oklch(var(--theme-destructive))]"
+                  )}>
+                    {item.status === 'Active' ? <FiCheck className="h-3 w-3" /> : <FiX className="h-3 w-3" />}
+                    {item.status}
+                  </span>
+                </TableCell>
+                <TableCell className="text-[oklch(var(--theme-muted-foreground))]">
+                  {item.lastActive}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
       </div>
     );
-  },
+  }
 };

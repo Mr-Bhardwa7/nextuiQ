@@ -3,13 +3,13 @@ import { cn } from "@/lib/utils";
 import { VariantProps, cva } from "class-variance-authority";
 
 const linkVariants = cva(
-  "inline-flex items-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[oklch(var(--theme-ring))] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
-        default: "text-primary hover:text-primary/80",
-        ghost: "text-muted-foreground hover:text-foreground",
-        destructive: "text-destructive hover:text-destructive/80",
+        default: "text-[oklch(var(--theme-primary))] hover:text-[oklch(var(--theme-primary)/0.8)]",
+        ghost: "text-[oklch(var(--theme-muted-foreground))] hover:text-[oklch(var(--theme-foreground))]",
+        destructive: "text-[oklch(var(--theme-destructive))] hover:text-[oklch(var(--theme-destructive)/0.8)]",
       },
       size: {
         default: "text-base",

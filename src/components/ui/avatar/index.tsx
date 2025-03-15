@@ -26,10 +26,10 @@ export const Avatar: React.FC<AvatarProps> = ({
   };
 
   const statusClasses = {
-    online: 'bg-emerald-500',
-    offline: 'bg-gray-400',
-    busy: 'bg-rose-500',
-    away: 'bg-amber-500'
+    online: 'bg-[oklch(var(--theme-success))]',
+    offline: 'bg-[oklch(var(--theme-muted-foreground))]',
+    busy: 'bg-[oklch(var(--theme-error))]',
+    away: 'bg-[oklch(var(--theme-warning))]'
   };
 
   const getFallbackInitials = (name: string) => {
@@ -60,9 +60,10 @@ export const Avatar: React.FC<AvatarProps> = ({
         />
       ) : (
         <div
-          className={`rounded-full flex items-center justify-center bg-slate-200 text-slate-600 font-medium ${
-            sizeClasses[size]
-          } ${className}`}
+          className={`rounded-full flex items-center justify-center 
+            bg-[oklch(var(--theme-muted))] 
+            text-[oklch(var(--theme-foreground))] 
+            font-medium ${sizeClasses[size]} ${className}`}
           aria-hidden="true"
         >
           {fallback ? getFallbackInitials(fallback) : '?'}
@@ -70,9 +71,10 @@ export const Avatar: React.FC<AvatarProps> = ({
       )}
       {status && (
         <span
-          className={`absolute bottom-0 right-0 block rounded-full ring-2 ring-white dark:ring-slate-900 ${
-            statusClasses[status]
-          } ${size === 'sm' ? 'w-2 h-2' : 'w-3 h-3'}`}
+          className={`absolute bottom-0 right-0 block rounded-full 
+            ring-2 ring-[oklch(var(--theme-background))] 
+            ${statusClasses[status]} 
+            ${size === 'sm' ? 'w-2 h-2' : 'w-3 h-3'}`}
           aria-hidden="true"
           role="status"
           title={`User is ${status}`}

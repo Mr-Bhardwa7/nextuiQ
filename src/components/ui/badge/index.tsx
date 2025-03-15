@@ -36,22 +36,22 @@ export const Badge: React.FC<BadgeProps> = ({
 
   const variants = {
     light: {
-      primary: "bg-blue-50 text-blue-700 dark:bg-blue-500/20 dark:text-blue-400",
-      success: "bg-green-50 text-green-700 dark:bg-green-500/20 dark:text-green-400",
-      error: "bg-red-50 text-red-700 dark:bg-red-500/20 dark:text-red-400",
-      warning: "bg-amber-50 text-amber-700 dark:bg-amber-500/20 dark:text-amber-400",
-      info: "bg-sky-50 text-sky-700 dark:bg-sky-500/20 dark:text-sky-400",
-      light: "bg-slate-100 text-slate-700 dark:bg-slate-500/20 dark:text-slate-300",
-      dark: "bg-slate-200 text-slate-800 dark:bg-slate-500/40 dark:text-slate-200",
+      primary: "bg-[oklch(var(--theme-primary)/0.1)] text-[oklch(var(--theme-primary))]",
+      success: "bg-[oklch(var(--theme-success)/0.1)] text-[oklch(var(--theme-success))]",
+      error: "bg-[oklch(var(--theme-error)/0.1)] text-[oklch(var(--theme-error))]",
+      warning: "bg-[oklch(var(--theme-warning)/0.1)] text-[oklch(var(--theme-warning))]",
+      info: "bg-[oklch(var(--theme-info)/0.1)] text-[oklch(var(--theme-info))]",
+      light: "bg-[oklch(var(--theme-muted))] text-[oklch(var(--theme-muted-foreground))]",
+      dark: "bg-[oklch(var(--theme-muted-foreground))] text-[oklch(var(--theme-foreground))]",
     },
     solid: {
-      primary: "bg-blue-500 text-white dark:bg-blue-600",
-      success: "bg-green-500 text-white dark:bg-green-600",
-      error: "bg-red-500 text-white dark:bg-red-600",
-      warning: "bg-amber-500 text-white dark:bg-amber-600",
-      info: "bg-sky-500 text-white dark:bg-sky-600",
-      light: "bg-slate-200 text-slate-800 dark:bg-slate-600 dark:text-slate-100",
-      dark: "bg-slate-800 text-white dark:bg-slate-700",
+      primary: "bg-[oklch(var(--theme-primary))] text-white",
+      success: "bg-[oklch(var(--theme-success))] text-white",
+      error: "bg-[oklch(var(--theme-error))] text-white",
+      warning: "bg-[oklch(var(--theme-warning))] text-white",
+      info: "bg-[oklch(var(--theme-info))] text-white",
+      light: "bg-[oklch(var(--theme-muted))] text-[oklch(var(--theme-foreground))]",
+      dark: "bg-[oklch(var(--theme-foreground))] text-white",
     },
   };
 

@@ -1,324 +1,304 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import {Modal} from './index';
-import {Button} from '@/components/ui/button';
-import { useModal } from '@/hooks/useModal';
-import { FiInfo, FiAlertTriangle, FiCheck, FiStar, FiDollarSign, FiPackage, FiBell } from 'react-icons/fi';
+import { Modal } from './index';
+import { Button } from '../button';
+import { useState } from 'react';
 
 const meta: Meta<typeof Modal> = {
   title: 'Components/ui/Modal',
   component: Modal,
+  parameters: {
+    layout: 'centered',
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof Modal>;
 
-const DefaultModalDemo = () => {
-  const { isOpen, open, close } = useModal();
-
+// Base Modal Example
+const BasicModalDemo = () => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <div>
-      <Button onClick={open}>Open Modal</Button>
-
-      <Modal isOpen={isOpen} onClose={close} title="Default Modal">
-        <div className="flex items-start gap-4">
-          <FiInfo className="w-6 h-6 text-blue-500 mt-1" />
-          <div className="flex-1">
-            <p className="text-slate-600 dark:text-slate-300">
-              This is a default modal with a title and standard size.
-            </p>
-            <div className="mt-6 flex justify-end gap-2">
-              <Button variant="outline" onClick={close}>
-                Cancel
-              </Button>
-              <Button onClick={close}>
-                Confirm
-              </Button>
-            </div>
-          </div>
-        </div>
-      </Modal>
-    </div>
-  );
-};
-
-const SizesModalDemo = () => {
-  const smallModal = useModal();
-  const largeModal = useModal();
-  const fullscreenModal = useModal();
-
-  return (
-    <div className="flex gap-4">
-      <Button variant="outline" onClick={smallModal.open}>
-        Small Modal
-      </Button>
-      <Button variant="outline" onClick={largeModal.open}>
-        Large Modal
-      </Button>
-      <Button variant="outline" onClick={fullscreenModal.open}>
-        Fullscreen Modal
-      </Button>
-
-      <Modal isOpen={smallModal.isOpen} onClose={smallModal.close} size="sm" title="Warning">
-        <div className="flex items-start gap-4">
-          <FiAlertTriangle className="w-6 h-6 text-amber-500 mt-1" />
-          <div className="flex-1">
-            <p className="text-slate-600 dark:text-slate-300 font-medium">Are you sure you want to delete this item?</p>
-            <p className="text-slate-500 dark:text-slate-400 text-sm mt-2">This action cannot be undone.</p>
-            <div className="mt-6 flex justify-end gap-2">
-              <Button variant="outline" onClick={smallModal.close}>Cancel</Button>
-              <Button 
-                onClick={smallModal.close}
-                className="bg-red-500 hover:bg-red-600 text-white dark:bg-red-600 dark:hover:bg-red-700 dark:text-white"
-              >
-                <FiAlertTriangle className="w-4 h-4 mr-2" />
-                Delete
-              </Button>
-            </div>
-          </div>
-        </div>
-      </Modal>
-
-      <Modal isOpen={largeModal.isOpen} onClose={largeModal.close} size="lg" title="Success">
-        <div className="flex items-start gap-4">
-          <FiCheck className="w-6 h-6 text-green-500 mt-1" />
-          <div className="flex-1">
-            <p className="text-slate-600 dark:text-slate-300">Your changes have been successfully saved!</p>
-            <div className="mt-6 flex justify-end">
-              <Button onClick={largeModal.close}>Continue</Button>
-            </div>
-          </div>
-        </div>
-      </Modal>
-
-      <Modal 
-        isOpen={fullscreenModal.isOpen} 
-        onClose={fullscreenModal.close} 
-        isFullscreen 
-        title="Preview"
-      >
-        <div className="h-full flex flex-col">
-          <div className="flex-1 overflow-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {Array.from({ length: 6 }).map((_, i) => (
-                <div key={i} className="p-4 rounded-lg border border-slate-200 dark:border-slate-700">
-                  <p className="text-slate-600 dark:text-slate-300">Content block {i + 1}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="mt-6 pt-4 border-t border-slate-200 dark:border-slate-700 flex justify-end">
-            <Button variant="outline" onClick={fullscreenModal.close}>Close Preview</Button>
-          </div>
-        </div>
-      </Modal>
-    </div>
-  );
-};
-
-const PositionedModalDemo = () => {
-  const centerModal = useModal();
-  const topModal = useModal();
-
-  return (
-    <div className="flex gap-4">
-      <Button onClick={centerModal.open}>
-        Centered Modal
-      </Button>
-      <Button onClick={topModal.open}>
-        Top Modal
-      </Button>
-
-      <Modal 
-        isOpen={centerModal.isOpen} 
-        onClose={centerModal.close} 
-        position="center"
-        title="Notification"
-      >
-        <div className="flex items-start gap-4">
-          <FiInfo className="w-6 h-6 text-blue-500 mt-1" />
-          <div className="flex-1">
-            <p className="text-slate-600 dark:text-slate-300">Important update available!</p>
-            <div className="mt-6 flex justify-end gap-2">
-              <Button variant="outline" onClick={centerModal.close}>Later</Button>
-              <Button onClick={centerModal.close}>Update Now</Button>
-            </div>
-          </div>
-        </div>
-      </Modal>
-
-      <Modal 
-        isOpen={topModal.isOpen} 
-        onClose={topModal.close} 
-        position="top"
-        title="Quick Action"
+    <>
+      <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
+      <Modal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        title="Welcome Back!"
+        description="Enter your credentials to access your account"
       >
         <div className="space-y-4">
-          <div className="flex items-center gap-4 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50 cursor-pointer">
-            <div className="p-2 rounded-full bg-blue-50 dark:bg-blue-900/20">
-              <FiInfo className="w-5 h-5 text-blue-500" />
-            </div>
-            <div className="flex-1">
-              <p className="text-slate-900 dark:text-slate-100 font-medium">View Details</p>
-              <p className="text-slate-500 dark:text-slate-400 text-sm">See more information</p>
-            </div>
-          </div>
+          <p className="text-[oklch(var(--theme-foreground))]">
+            This is a basic modal with a title and description.
+          </p>
           <div className="flex justify-end">
-            <Button variant="outline" onClick={topModal.close}>Close</Button>
+            <Button onClick={() => setIsOpen(false)}>Close</Button>
           </div>
         </div>
       </Modal>
-    </div>
+    </>
   );
 };
 
-export const Default: Story = {
-  render: () => <DefaultModalDemo />
+// Alert Modal Example
+const AlertModalDemo = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <Button variant="destructive" onClick={() => setIsOpen(true)}>Open Alert</Button>
+      <Modal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        size="sm"
+      >
+        <div className="space-y-4">
+          <div className="flex items-center gap-3">
+            <div className="p-3 rounded-full bg-[oklch(var(--theme-destructive)/0.1)]">
+              <svg className="w-6 h-6 text-[oklch(var(--theme-destructive))]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-[oklch(var(--theme-foreground))]">Delete Account</h3>
+              <p className="text-sm text-[oklch(var(--theme-muted-foreground))]">Are you sure you want to delete your account? This action cannot be undone.</p>
+            </div>
+          </div>
+          <div className="flex justify-end gap-3">
+            <Button variant="outline" onClick={() => setIsOpen(false)}>Cancel</Button>
+            <Button variant="destructive" onClick={() => setIsOpen(false)}>Delete</Button>
+          </div>
+        </div>
+      </Modal>
+    </>
+  );
 };
 
-export const Sizes: Story = {
-  render: () => <SizesModalDemo />
+// Form Modal Example
+const FormModalDemo = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <Button variant="outline" onClick={() => setIsOpen(true)}>Open Form</Button>
+      <Modal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        title="Create Project"
+        size="lg"
+      >
+        <div className="space-y-4">
+          <div className="space-y-4">
+            <div>
+              <label className="text-sm font-medium text-[oklch(var(--theme-foreground))]">Project Name</label>
+              <input 
+                type="text" 
+                className="mt-1 w-full rounded-md border border-[oklch(var(--theme-border))] bg-[oklch(var(--theme-background))] px-3 py-2 text-sm"
+                placeholder="Enter project name"
+              />
+            </div>
+            <div>
+              <label className="text-sm font-medium text-[oklch(var(--theme-foreground))]">Description</label>
+              <textarea 
+                className="mt-1 w-full rounded-md border border-[oklch(var(--theme-border))] bg-[oklch(var(--theme-background))] px-3 py-2 text-sm"
+                rows={3}
+                placeholder="Enter project description"
+              />
+            </div>
+          </div>
+          <div className="flex justify-end gap-3">
+            <Button variant="outline" onClick={() => setIsOpen(false)}>Cancel</Button>
+            <Button onClick={() => setIsOpen(false)}>Create</Button>
+          </div>
+        </div>
+      </Modal>
+    </>
+  );
 };
 
-export const Positions: Story = {
-  render: () => <PositionedModalDemo />
+const GalleryModalDemo = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <Button variant="secondary" onClick={() => setIsOpen(true)}>Open Gallery</Button>
+      <Modal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        size="xl"
+        title="Photo Gallery"
+      >
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {[1, 2, 3, 4, 5, 6].map((item) => (
+            <div key={item} className="aspect-square rounded-lg bg-[oklch(var(--theme-muted))] p-2 hover:bg-[oklch(var(--theme-muted)/0.8)] transition-colors">
+              <div className="w-full h-full rounded-md bg-[oklch(var(--theme-background))] flex items-center justify-center">
+                <span className="text-[oklch(var(--theme-muted-foreground))]">Image {item}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Modal>
+    </>
+  );
 };
 
-const AlertModalsDemo = () => {
-  const signOutModal = useModal();
-  const deleteAccountModal = useModal();
-  const cookiesModal = useModal();
-  const upgradeModal = useModal();
+// Multi-Step Modal
+const MultiStepModalDemo = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [step, setStep] = useState(1);
+
+  const handleClose = () => {
+    setIsOpen(false);
+    setStep(1);
+  };
 
   return (
-    <div className="flex gap-4 flex-wrap">
-      <Button variant="outline" onClick={signOutModal.open}>Sign Out Modal</Button>
-      <Button variant="outline" onClick={deleteAccountModal.open}>Delete Account Modal</Button>
-      <Button variant="outline" onClick={cookiesModal.open}>Cookies Modal</Button>
-      <Button variant="outline" onClick={upgradeModal.open}>Upgrade Modal</Button>
+    <>
+      <Button variant="outline" onClick={() => setIsOpen(true)}>Multi-Step Form</Button>
+      <Modal
+        isOpen={isOpen}
+        onClose={handleClose}
+        size="lg"
+      >
+        <div className="space-y-6">
+          <div className="relative after:absolute after:inset-x-0 after:top-1/2 after:block after:h-0.5 after:bg-[oklch(var(--theme-border))] after:-translate-y-1/2">
+            <ol className="relative z-10 flex justify-between">
+              {[1, 2, 3].map((item) => (
+                <li key={item}>
+                  <div className={`flex h-6 w-6 items-center justify-center rounded-full text-xs
+                    ${step >= item ? 'bg-[oklch(var(--theme-primary))] text-[oklch(var(--theme-primary-foreground))]' 
+                    : 'bg-[oklch(var(--theme-muted))] text-[oklch(var(--theme-muted-foreground))]'}`}>
+                    {item}
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
 
-      {/* Sign Out Modal */}
-      <Modal isOpen={signOutModal.isOpen} onClose={signOutModal.close} size="sm">
-        <div className="text-center">
-          <div className="mx-auto mb-4 h-12 w-12 rounded-full bg-amber-100 flex items-center justify-center">
-            <FiAlertTriangle className="h-6 w-6 text-amber-500" />
+          <div className="min-h-[200px]">
+            {step === 1 && (
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-[oklch(var(--theme-foreground))]">Personal Information</h3>
+                <div className="space-y-2">
+                  <input 
+                    type="text" 
+                    placeholder="Full Name"
+                    className="w-full rounded-md border border-[oklch(var(--theme-border))] bg-[oklch(var(--theme-background))] px-3 py-2"
+                  />
+                  <input 
+                    type="email" 
+                    placeholder="Email"
+                    className="w-full rounded-md border border-[oklch(var(--theme-border))] bg-[oklch(var(--theme-background))] px-3 py-2"
+                  />
+                </div>
+              </div>
+            )}
+            {step === 2 && (
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-[oklch(var(--theme-foreground))]">Preferences</h3>
+                <div className="space-y-2">
+                  <select className="w-full rounded-md border border-[oklch(var(--theme-border))] bg-[oklch(var(--theme-background))] px-3 py-2">
+                    <option>Option 1</option>
+                    <option>Option 2</option>
+                  </select>
+                </div>
+              </div>
+            )}
+            {step === 3 && (
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-[oklch(var(--theme-foreground))]">Confirmation</h3>
+                <p className="text-[oklch(var(--theme-muted-foreground))]">Please review your information before submitting.</p>
+              </div>
+            )}
           </div>
-          <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Sign out</h3>
-          <p className="text-slate-500 dark:text-slate-400 mb-6">
-            Are you sure you would like to sign out of your account?
-          </p>
-          <div className="flex flex-col gap-2 w-full">
-            <Button onClick={signOutModal.close}>Sign out</Button>
-            <Button variant="outline" onClick={signOutModal.close}>Cancel</Button>
-          </div>
-        </div>
-      </Modal>
 
-      {/* Delete Account Modal */}
-      <Modal isOpen={deleteAccountModal.isOpen} onClose={deleteAccountModal.close} size="sm">
-        <div className="text-center">
-          <div className="mx-auto mb-4 h-12 w-12 rounded-full bg-red-100 flex items-center justify-center">
-            <FiAlertTriangle className="h-6 w-6 text-red-500" />
-          </div>
-          <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Delete Personal Account</h3>
-          <p className="text-slate-500 dark:text-slate-400 mb-6">
-            Permanently remove your Personal Account and all of its contents. This action is not reversible, so please continue with caution.
-          </p>
-          <div className="flex flex-col gap-2 w-full">
+          <div className="flex justify-between">
             <Button 
-              className="bg-red-500 hover:bg-red-600 text-white"
-              onClick={deleteAccountModal.close}
+              variant="outline" 
+              onClick={() => step > 1 && setStep(step - 1)}
+              disabled={step === 1}
             >
-              Delete personal account
+              Previous
             </Button>
-            <Button variant="outline" onClick={deleteAccountModal.close}>Cancel</Button>
+            <Button 
+              onClick={() => step < 3 ? setStep(step + 1) : handleClose()}
+            >
+              {step === 3 ? 'Submit' : 'Next'}
+            </Button>
           </div>
         </div>
       </Modal>
-
-      {/* Cookies Modal */}
-      <Modal isOpen={cookiesModal.isOpen} onClose={cookiesModal.close} size="sm">
-        <div className="text-center">
-          <div className="mx-auto mb-4">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="mx-auto text-slate-900 dark:text-white">
-              <path d="M12 2a10 10 0 1010 10 4 4 0 01-5-5 4 4 0 01-5-5" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M8.5 8.5v.01" strokeWidth="3" strokeLinecap="round"/>
-              <path d="M16 15.5v.01" strokeWidth="3" strokeLinecap="round"/>
-              <path d="M12 12.5v.01" strokeWidth="3" strokeLinecap="round"/>
-            </svg>
-          </div>
-          <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Cookies!</h3>
-          <p className="text-slate-500 dark:text-slate-400 mb-6">
-            This website uses cookies to make your experience better.
-          </p>
-          <div className="flex flex-col gap-2 w-full">
-            <Button onClick={cookiesModal.close}>Got it</Button>
-            <Button variant="outline" onClick={cookiesModal.close}>Privacy Policy</Button>
-          </div>
-        </div>
-      </Modal>
-
-      {/* Advanced Features Modal */}
-      <Modal isOpen={upgradeModal.isOpen} onClose={upgradeModal.close} size="md">
-        <div>
-          <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Advanced features</h3>
-          <p className="text-slate-500 dark:text-slate-400 mb-2">
-            "Compare to" Price, Bulk Discount Pricing, Inventory Tracking
-          </p>
-          <a href="#" className="text-blue-500 hover:text-blue-600 mb-6 inline-block">Sign up here</a>
-          
-          <Button className="w-full mb-6">
-            <FiStar className="mr-2" /> Upgrade to get these features
-          </Button>
-
-          <div className="space-y-6">
-            <div className="flex gap-4">
-              <div className="p-2 rounded-full bg-blue-50 dark:bg-blue-900/20">
-                <FiDollarSign className="w-5 h-5 text-blue-500" />
-              </div>
-              <div>
-                <h4 className="font-medium text-slate-900 dark:text-white">"Compare to" price</h4>
-                <p className="text-slate-500 dark:text-slate-400 text-sm">
-                  Use this feature when you want to put a product on sale or show savings off suggested retail pricing.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex gap-4">
-              <div className="p-2 rounded-full bg-green-50 dark:bg-green-900/20">
-                <FiPackage className="w-5 h-5 text-green-500" />
-              </div>
-              <div>
-                <h4 className="font-medium text-slate-900 dark:text-white">Bulk discount pricing</h4>
-                <p className="text-slate-500 dark:text-slate-400 text-sm">
-                  Encourage higher purchase quantities with volume discounts.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex gap-4">
-              <div className="p-2 rounded-full bg-purple-50 dark:bg-purple-900/20">
-                <FiBell className="w-5 h-5 text-purple-500" />
-              </div>
-              <div>
-                <h4 className="font-medium text-slate-900 dark:text-white">Inventory tracking</h4>
-                <p className="text-slate-500 dark:text-slate-400 text-sm">
-                  Automatically keep track of product availability and receive notifications when inventory levels get low.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-6 pt-4 border-t border-slate-200 dark:border-slate-700 flex justify-end gap-2">
-            <Button variant="outline" onClick={upgradeModal.close}>Cancel</Button>
-            <Button onClick={upgradeModal.close}>Upgrade now</Button>
-          </div>
-        </div>
-      </Modal>
-    </div>
+    </>
   );
 };
 
-// Add the new story
-export const AlertModals: Story = {
-  render: () => <AlertModalsDemo />
+// Success Modal with Animation
+const SuccessModalDemo = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <Button variant="secondary" onClick={() => setIsOpen(true)}>Show Success</Button>
+      <Modal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        size="sm"
+      >
+        <div className="text-center space-y-4 py-4">
+          <div className="w-16 h-16 rounded-full bg-[oklch(var(--theme-primary)/0.1)] mx-auto flex items-center justify-center">
+            <svg className="w-8 h-8 text-[oklch(var(--theme-primary))]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <h3 className="text-xl font-semibold text-[oklch(var(--theme-foreground))]">Success!</h3>
+          <p className="text-[oklch(var(--theme-muted-foreground))]">Your action has been completed successfully.</p>
+          <Button onClick={() => setIsOpen(false)} className="w-full">
+            Continue
+          </Button>
+        </div>
+      </Modal>
+    </>
+  );
+};
+
+export const Basic: Story = {
+  render: () => <BasicModalDemo />
+};
+
+export const Alert: Story = {
+  render: () => <AlertModalDemo />
+};
+
+export const Form: Story = {
+  render: () => <FormModalDemo />
+};
+
+export const Gallery: Story = {
+  render: () => <GalleryModalDemo />
+};
+
+export const MultiStep: Story = {
+  render: () => <MultiStepModalDemo />
+};
+
+export const Success: Story = {
+  render: () => <SuccessModalDemo />
+};
+
+
+export const Fullscreen: Story = {
+  render: () => {
+    const [isOpen, setIsOpen] = useState(false);
+    return (
+      <>
+        <Button onClick={() => setIsOpen(true)}>Open Fullscreen</Button>
+        <Modal
+          isOpen={isOpen}
+          onClose={() => setIsOpen(false)}
+          isFullscreen
+          title="Fullscreen Modal"
+        >
+          <div className="h-full space-y-4">
+            <p className="text-[oklch(var(--theme-foreground))]">This is a fullscreen modal.</p>
+            <Button onClick={() => setIsOpen(false)}>Close</Button>
+          </div>
+        </Modal>
+      </>
+    );
+  }
 };

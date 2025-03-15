@@ -46,9 +46,9 @@ export function Card({
   ...props
 }: CardProps) {
   const variantClasses = {
-    elevated: '[data-theme="light"]:bg-white [data-theme="dark"]:bg-slate-800 shadow-md hover:shadow-lg transition-shadow',
-    filled: '[data-theme="light"]:bg-slate-100 [data-theme="dark"]:bg-slate-700',
-    outlined: 'border [data-theme="light"]:border-slate-200 [data-theme="dark"]:border-slate-700 bg-transparent'
+    elevated: 'bg-[oklch(var(--theme-background))] shadow-md hover:shadow-lg transition-shadow',
+    filled: 'bg-[oklch(var(--theme-muted))]',
+    outlined: 'border border-[oklch(var(--theme-border))] bg-transparent'
   };
 
   const sizeClasses = {
@@ -98,13 +98,14 @@ export function CardHeader({
     >
       {avatar && <div className="flex-shrink-0" aria-hidden="true">{avatar}</div>}
       <div className="flex-grow">
+        // In CardHeader
         {title && (
-          <div id={headerId} className="text-lg font-semibold text-slate-900 dark:text-white">
+          <div id={headerId} className="text-lg font-semibold text-[oklch(var(--theme-foreground))]">
             {title}
           </div>
         )}
         {subtitle && (
-          <div className="text-sm text-slate-500 dark:text-slate-400" aria-describedby={headerId}>
+          <div className="text-sm text-[oklch(var(--theme-muted-foreground))]" aria-describedby={headerId}>
             {subtitle}
           </div>
         )}
@@ -147,7 +148,7 @@ export function CardContent({
 }: CardContentProps) {
   return (
     <div
-      className={cn('p-4 text-slate-600 dark:text-slate-300', className)}
+      className={cn('p-4 text-[oklch(var(--theme-muted-foreground))]', className)}
       role="region"
       {...props}
     >

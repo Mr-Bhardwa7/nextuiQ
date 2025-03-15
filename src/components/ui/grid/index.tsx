@@ -24,7 +24,7 @@ export function Grid({
 }: GridProps) {
   const getGridCols = () => {
     if (autoFit && minChildWidth) {
-      return `grid-cols-[repeat(auto-fit,minmax(${minChildWidth},1fr))]`;
+      return `grid-cols-[repeat(auto-fit,minmax(var(--grid-min-child-width,${minChildWidth}),1fr))]`;
     }
     if (typeof cols === 'number') {
       return `grid-cols-${cols}`;
@@ -42,19 +42,22 @@ export function Grid({
 
   const getGap = () => {
     if (typeof gap === 'number') {
-      return `gap-${gap}`;
+      return `gap-[var(--grid-gap-${gap})]`;
     }
-    return cn(gap?.x && `gap-x-${gap.x}`, gap?.y && `gap-y-${gap.y}`);
+    return cn(
+      gap?.x && `gap-x-[var(--grid-gap-x-${gap.x})]`,
+      gap?.y && `gap-y-[var(--grid-gap-y-${gap.y})]`
+    );
   };
 
   return (
     <div
       className={cn(
-        'grid w-full',
+        'grid w-full bg-[oklch(var(--theme-background))]',
         getGridCols(),
-        rows && `grid-rows-${rows}`,
+        rows && `grid-rows-[var(--grid-rows-${rows})]`,
         getGap(),
-        autoFlow && `grid-flow-${autoFlow}`,
+        autoFlow && `grid-flow-[var(--grid-flow-${autoFlow})]`,
         className
       )}
       {...props}

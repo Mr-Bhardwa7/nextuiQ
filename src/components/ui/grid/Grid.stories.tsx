@@ -75,7 +75,7 @@ export const Default: Story = {
 export const WithRows: Story = {
   args: {
     cols: 2,
-    rows: 3,
+    rows: 2,
     gap: 4,
     className: 'max-w-2xl border border-dashed border-slate-300 p-4 rounded-lg',
     children: Array.from({ length: 6 }, (_, i) => <GridItem key={i}>Item {i + 1}</GridItem>),

@@ -129,8 +129,9 @@ export const Dropdown = ({
         <div
           id={id || menuId}
           className={cn(
-            "absolute z-50 mt-2 min-w-[8rem] overflow-hidden rounded-md border border-slate-200 bg-white shadow-md animate-in fade-in-0 zoom-in-95",
-            "dark:border-slate-800 dark:bg-slate-900",
+            "absolute z-50 mt-2 min-w-[8rem] overflow-hidden rounded-md border",
+            "border-[oklch(var(--theme-border))] bg-[oklch(var(--theme-background))]",
+            "shadow-md animate-in fade-in-0 zoom-in-95",
             align === 'end' ? 'right-0' : 'left-0',
             className
           )}
@@ -148,11 +149,11 @@ export const Dropdown = ({
                   onFocus={() => setActiveIndex(index)}
                   className={cn(
                     "relative flex w-full cursor-pointer select-none items-center px-3 py-2 text-sm outline-none transition-colors",
-                    "text-slate-700 hover:bg-slate-50 hover:text-slate-900 focus:bg-slate-50 focus:text-slate-900",
-                    "dark:text-slate-300 dark:hover:bg-slate-800/50 dark:hover:text-slate-50 dark:focus:bg-slate-800/50 dark:focus:text-slate-50",
+                    "text-[oklch(var(--theme-foreground))] hover:bg-[oklch(var(--theme-muted))] hover:text-[oklch(var(--theme-foreground))]",
+                    "focus:bg-[oklch(var(--theme-muted))] focus:text-[oklch(var(--theme-foreground))]",
                     item.disabled && "cursor-not-allowed opacity-50",
-                    item.selected && "bg-slate-100 text-slate-900 dark:bg-slate-800 dark:text-slate-50",
-                    activeIndex === index && "bg-slate-50 text-slate-900 dark:bg-slate-800/50 dark:text-slate-50"
+                    item.selected && "bg-[oklch(var(--theme-muted))] text-[oklch(var(--theme-foreground))]",
+                    activeIndex === index && "bg-[oklch(var(--theme-muted))] text-[oklch(var(--theme-foreground))]"
                   )}
                   disabled={item.disabled}
                   role="menuitem"

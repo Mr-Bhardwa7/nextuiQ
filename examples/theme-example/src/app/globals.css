@@ -1,78 +1,78 @@
 @import "tailwindcss";
-
 @import 'nextuiq/dist/styles.css';
 
 @theme {
   /* Base Colors */
-  --color-primary: 210 100% 50%;
-  --color-primary-light: 210 100% 60%;
-  --color-primary-dark: 210 100% 40%;
+  --color-primary: 222.2 47.4% 11.2%;
+  --color-primary-light: 222.2 47.4% 21.2%;
+  --color-primary-dark: 222.2 47.4% 1.2%;
   
   /* Secondary Colors */
-  --color-secondary: 280 100% 50%;
-  --color-secondary-light: 280 100% 60%;
-  --color-secondary-dark: 280 100% 40%;
+  --color-secondary: 217.2 32.6% 17.5%;
+  --color-secondary-light: 217.2 32.6% 27.5%;
+  --color-secondary-dark: 217.2 32.6% 7.5%;
   
   /* Accent Colors */
-  --color-accent-1: 340 100% 50%;
-  --color-accent-2: 160 100% 50%;
-  --color-accent-3: 60 100% 50%;
+  --color-accent-1: 210 40% 98%;
+  --color-accent-2: 215 31% 93%;
+  --color-accent-3: 214 32% 91%;
   
   /* Neutral Colors */
-  --color-gray-50: 220 13% 95%;
-  --color-gray-100: 220 13% 90%;
-  --color-gray-200: 220 13% 80%;
-  --color-gray-300: 220 13% 70%;
-  --color-gray-400: 220 13% 60%;
-  --color-gray-500: 220 13% 50%;
+  --color-gray-50: 0 0% 95%;
+  --color-gray-100: 0 0% 90%;
+  --color-gray-200: 0 0% 80%;
+  --color-gray-300: 0 0% 70%;
+  --color-gray-400: 0 0% 60%;
+  --color-gray-500: 0 0% 50%;
   
   /* Semantic Colors */
-  --color-success: 160 100% 40%;
-  --color-warning: 40 100% 50%;
-  --color-error: 0 100% 50%;
-  --color-info: 200 100% 50%;
+  --color-success: 142 76% 36%;
+  --color-warning: 38 92% 50%;
+  --color-error: 346 87% 47%;
+  --color-info: 199 89% 48%;
   
   /* Background and Text */
   --color-background: 0 0% 100%;
-  --color-text-primary: 220 13% 10%;
-  --color-text-secondary: 220 13% 45%;
-  --color-text-muted: 220 13% 65%;
+  --color-text-primary: 222.2 84% 4.9%;
+  --color-text-secondary: 217.9 10.6% 30.9%;
+  --color-text-muted: 215 20.2% 65.1%;
 }
 
 body[data-theme="dark"] {
-  /* Invert and adjust colors for dark mode */
-  --color-primary: 210 100% 60%;
-  --color-primary-light: 210 100% 70%;
-  --color-primary-dark: 210 100% 50%;
+  /* Base Colors */
+  --color-primary: 210 40% 98%;
+  --color-primary-light: 210 40% 88%;
+  --color-primary-dark: 210 40% 78%;
   
-  --color-secondary: 280 100% 60%;
-  --color-secondary-light: 280 100% 70%;
-  --color-secondary-dark: 280 100% 50%;
+  /* Secondary Colors */
+  --color-secondary: 217.2 32.6% 82.5%;
+  --color-secondary-light: 217.2 32.6% 92.5%;
+  --color-secondary-dark: 217.2 32.6% 72.5%;
   
-  /* Adjust accent colors for dark mode */
-  --color-accent-1: 340 90% 60%;
-  --color-accent-2: 160 90% 60%;
-  --color-accent-3: 60 90% 60%;
+  /* Accent Colors */
+  --color-accent-1: 222.2 47.4% 11.2%;
+  --color-accent-2: 217.2 32.6% 17.5%;
+  --color-accent-3: 214.3 31.8% 91.4%;
   
-  /* Invert gray scale */
-  --color-gray-50: 220 13% 5%;
-  --color-gray-100: 220 13% 10%;
-  --color-gray-200: 220 13% 20%;
-  --color-gray-300: 220 13% 30%;
-  --color-gray-400: 220 13% 40%;
-  --color-gray-500: 220 13% 50%;
+  /* Neutral Colors */
+  --color-gray-50: 0 0% 8.5%;
+  --color-gray-100: 0 0% 11%;
+  --color-gray-200: 0 0% 14.9%;
+  --color-gray-300: 0 0% 25.9%;
+  --color-gray-400: 0 0% 34.5%;
+  --color-gray-500: 0 0% 50%;
   
-  /* Adjust semantic colors */
-  --color-success: 160 90% 50%;
-  --color-warning: 40 90% 60%;
-  --color-error: 0 90% 60%;
-  --color-info: 200 90% 60%;
+  /* Semantic Colors */
+  --color-success: 143 72% 29%;
+  --color-warning: 36 100% 44%;
+  --color-error: 346 87% 43%;
+  --color-info: 199 89% 44%;
   
   /* Dark theme background and text */
-  --color-background: 220 10% 10%;
-  --color-text-primary: 220 13% 95%;
-  --color-text-secondary: 220 13% 75%;
-  --color-text-muted: 220 13% 55%;
+  --color-background: 222.2 84% 4.9%;
+  --color-text-primary: 210 40% 98%;
+  --color-text-secondary: 215 20.2% 65.1%;
+  --color-text-muted: 215 16% 47%;
 }
 
 body {

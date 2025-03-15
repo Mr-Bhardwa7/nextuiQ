@@ -35,7 +35,7 @@ const ResponsiveImageComponent = React.forwardRef<HTMLImageElement, ResponsiveIm
     return (
       <div
         className={cn(
-          'relative overflow-hidden bg-slate-100 dark:bg-slate-800',
+          'relative overflow-hidden bg-[oklch(var(--theme-muted))]',
           containerClassName
         )}
         style={{ aspectRatio }}
@@ -45,8 +45,8 @@ const ResponsiveImageComponent = React.forwardRef<HTMLImageElement, ResponsiveIm
           src={error ? fallback : src}
           alt={alt}
           className={cn(
-            'h-full w-full transition-opacity duration-300',
-            isLoading ? 'opacity-0' : 'opacity-100',
+            'h-full w-full transition-[var(--image-transition)]',
+            isLoading ? 'opacity-[var(--image-loading-opacity)]' : 'opacity-[var(--image-loaded-opacity)]',
             objectFit === 'contain' && 'object-contain',
             objectFit === 'cover' && 'object-cover',
             objectFit === 'fill' && 'object-fill',
@@ -62,7 +62,11 @@ const ResponsiveImageComponent = React.forwardRef<HTMLImageElement, ResponsiveIm
         
         {isLoading && (
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="h-8 w-8 animate-spin rounded-full border-4 border-slate-200 border-t-slate-500" />
+            <div className="h-8 w-8 animate-spin rounded-full 
+              border-[var(--image-loader-border-width)] 
+              border-[oklch(var(--theme-muted))] 
+              border-t-[oklch(var(--theme-primary))]" 
+            />
           </div>
         )}
       </div>

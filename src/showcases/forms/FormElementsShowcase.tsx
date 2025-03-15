@@ -1,13 +1,13 @@
-import DefaultInputs from '@/components/forms/form-elements/DefaultInputs';
-import CheckboxComponents from '@/components/forms/form-elements/CheckboxComponents';
-import {Dropzone} from '@/components/forms/input/DropZone';
-import FileInputExample from '@/components/forms/form-elements/FileInputExample';
-import InputGroup from '@/components/forms/form-elements/InputGroup';
-import InputStates from '@/components/forms/form-elements/InputStates';
-import RadioButtons from '@/components/forms/form-elements/RadioButtons';
-import SelectInputs from '@/components/forms/form-elements/SelectInputs';
-import TextAreaInput from '@/components/forms/form-elements/TextAreaInput';
-import ToggleSwitch from '@/components/forms/form-elements/ToggleSwitch';
+import DefaultInputs from '@/examples/form-elements/DefaultInputs';
+import CheckboxComponents from '@/examples/form-elements/CheckboxComponents';
+import {Dropzone} from '@/components/form-elements/input/Dropzone';
+import FileInputExample from '@/examples/form-elements/FileInputExample';
+import InputGroup from '@/examples/form-elements/InputGroup';
+import InputStates from '@/examples/form-elements/InputStates';
+import RadioButtons from '@/examples/form-elements/RadioButtons';
+import SelectInputs from '@/examples/form-elements/SelectInputs';
+import TextAreaInput from '@/examples/form-elements/TextAreaInput';
+import ToggleSwitch from '@/examples/form-elements/ToggleSwitch';
 
 export default function FormElementsShowcase() {
   return (

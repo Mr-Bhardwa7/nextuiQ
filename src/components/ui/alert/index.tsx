@@ -27,32 +27,32 @@ export const Alert: React.FC<AlertProps> = ({
 }) => {
   const variantClasses = {
     success: {
-      container: "border-emerald-200 bg-emerald-50",
-      icon: "text-emerald-500",
-      title: "text-emerald-800",
-      text: "text-emerald-600",
-      link: "text-emerald-600 hover:text-emerald-700 underline"
+      container: "bg-[oklch(var(--theme-success)/0.1)] border-[oklch(var(--theme-success)/0.2)]",
+      icon: "text-[oklch(var(--theme-success))]",
+      title: "text-[oklch(var(--theme-success)/0.9)]",
+      text: "text-[oklch(var(--theme-success)/0.8)]",
+      link: "text-[oklch(var(--theme-success))] hover:text-[oklch(var(--theme-success)/0.8)] underline"
     },
     error: {
-      container: "border-red-200 bg-red-50",
-      icon: "text-red-500",
-      title: "text-red-800",
-      text: "text-red-600",
-      link: "text-red-600 hover:text-red-700 underline"
+      container: "bg-[oklch(var(--theme-error)/0.1)] border-[oklch(var(--theme-error)/0.2)]",
+      icon: "text-[oklch(var(--theme-error))]",
+      title: "text-[oklch(var(--theme-error)/0.9)]",
+      text: "text-[oklch(var(--theme-error)/0.8)]",
+      link: "text-[oklch(var(--theme-error))] hover:text-[oklch(var(--theme-error)/0.8)] underline"
     },
     warning: {
-      container: "border-amber-200 bg-amber-50",
-      icon: "text-amber-500",
-      title: "text-amber-800",
-      text: "text-amber-600",
-      link: "text-amber-600 hover:text-amber-700 underline"
+      container: "bg-[oklch(var(--theme-warning)/0.1)] border-[oklch(var(--theme-warning)/0.2)]",
+      icon: "text-[oklch(var(--theme-warning))]",
+      title: "text-[oklch(var(--theme-warning)/0.9)]",
+      text: "text-[oklch(var(--theme-warning)/0.8)]",
+      link: "text-[oklch(var(--theme-warning))] hover:text-[oklch(var(--theme-warning)/0.8)] underline"
     },
     info: {
-      container: "border-blue-200 bg-blue-50",
-      icon: "text-blue-500",
-      title: "text-blue-800",
-      text: "text-blue-600",
-      link: "text-blue-600 hover:text-blue-700 underline"
+      container: "bg-[oklch(var(--theme-info)/0.1)] border-[oklch(var(--theme-info)/0.2)]",
+      icon: "text-[oklch(var(--theme-info))]",
+      title: "text-[oklch(var(--theme-info)/0.9)]",
+      text: "text-[oklch(var(--theme-info)/0.8)]",
+      link: "text-[oklch(var(--theme-info))] hover:text-[oklch(var(--theme-info)/0.8)] underline"
     },
   };
 
