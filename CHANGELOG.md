@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.1.3] - 2024-03-XX
+## [0.1.3] - 2024-03-15
 
 ### Added
 
@@ -22,6 +22,7 @@
 - Better dark mode support in all components
 - Modernized dropdown components
 - Improved modal and card stories
+- Updated package.json metadata (keywords, repository, bugs, author, homepage)
 
 ### Fixed
 

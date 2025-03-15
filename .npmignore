@@ -1,0 +1,11 @@
+.storybook/
+src/
+examples/
+node_modules/
+.git/
+.github/
+*.test.*
+*.spec.*
+.eslintrc
+.prettierrc
+tsconfig.json
