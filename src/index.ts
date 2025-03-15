@@ -39,19 +39,19 @@ export { ThemeToggle } from './components/ui/theme-toggle';
 export { Grid, type GridProps } from './components/ui/grid';
 
 // Form Elements
-export { Form, type FormProps } from './components/forms/form';
-export { Input, type InputProps } from './components/forms/input';
-export { Checkbox, type CheckboxProps } from './components/forms/input/Checkbox';
-export { Dropzone } from './components/forms/input/DropZone';
-export { FileInput, type FileInputProps } from './components/forms/input/FileInput';
-export { PhoneInput, type PhoneInputProps } from './components/forms/input/PhoneInput';
-export { Radio, type RadioProps } from './components/forms/input/Radio';
-export { RadioSm, type RadioSmProps } from './components/forms/input/RadioSm';
-export { TextArea, type TextareaProps } from './components/forms/input/TextArea';
-export { Label, type LabelProps } from './components/forms/label';
-export { Select, type SelectProps } from './components/forms/select';
-export { MultiSelect, type MultiSelectProps } from './components/forms/select/MultiSelect';
-export { Switch, type SwitchProps } from './components/forms/switch';
+export { Form, type FormProps } from './components/form-elements/form';
+export { Input, type InputProps } from './components/form-elements/input';
+export { Checkbox, type CheckboxProps } from './components/form-elements/input/Checkbox';
+export { Dropzone } from './components/form-elements/input/Dropzone';
+export { FileInput, type FileInputProps } from './components/form-elements/input/FileInput';
+export { PhoneInput, type PhoneInputProps } from './components/form-elements/input/PhoneInput';
+export { Radio, type RadioProps } from './components/form-elements/input/Radio';
+export { RadioSm, type RadioSmProps } from './components/form-elements/input/RadioSm';
+export { TextArea, type TextareaProps } from './components/form-elements/input/TextArea';
+export { Label, type LabelProps } from './components/form-elements/label';
+export { Select, type SelectProps } from './components/form-elements/select';
+export { MultiSelect, type MultiSelectProps } from './components/form-elements/select/MultiSelect';
+export { Switch, type SwitchProps } from './components/form-elements/switch';
 
 // Hooks & Utils
 export * from './hooks/useModal';

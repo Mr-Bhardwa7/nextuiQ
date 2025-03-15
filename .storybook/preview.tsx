@@ -1,5 +1,6 @@
 import type { Preview } from "@storybook/react";
 import React from "react";
+import { ThemeProvider } from "../src/context/ThemeContext";
 import "../src/style.css";
 
 const preview: Preview = {
@@ -14,19 +15,17 @@ const preview: Preview = {
     backgrounds: {
       disable: true,
     },
-    darkMode: {
-      current: 'light',
-      darkClass: ['dark'],
-      lightClass: ['light'],
-      classTarget: 'html',
-      stylePreview: true
-    }
+    docs: {
+      disable: true,
+    },
   },
   decorators: [
     (Story) => (
-      <div className="light min-h-screen">
-        <Story />
-      </div>
+      <ThemeProvider defaultTheme="light">
+        <div className="p-4">
+          <Story />
+        </div>
+      </ThemeProvider>
     ),
   ],
 };

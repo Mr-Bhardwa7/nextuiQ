@@ -139,8 +139,8 @@ export const ECommerceCard: Story = {
     children: (
       <>
         <CardMedia
-          image="https://source.unsplash.com/random/400x400?product"
-          alt="Product"
+          image="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=400"
+          alt="Premium Headphones - White wireless headphones on a colored background"
           height="h-[200px]"
         />
         <CardContent className="space-y-2">

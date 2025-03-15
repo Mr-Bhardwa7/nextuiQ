@@ -2,20 +2,18 @@
 
 import { useTheme } from "../../../../src/context/ThemeContext";
 
-export const ThemeToggle = () => {
+export function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
 
-const handleToggle = () => {
-    toggleTheme(); 
-};
-    
   return (
     <button
-      onClick={handleToggle}
-      className="p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-gray-400"
+      type="button"
+      onClick={() => toggleTheme()}
+      className="p-2 rounded-lg bg-[oklch(var(--theme-muted))] hover:bg-[oklch(var(--theme-muted)/0.8)]"
+      aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
     >
       {theme === "light" ? (
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
           <path 
             strokeLinecap="round" 
             strokeLinejoin="round" 
@@ -24,7 +22,7 @@ const handleToggle = () => {
           />
         </svg>
       ) : (
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
           <path 
             strokeLinecap="round" 
             strokeLinejoin="round" 
@@ -35,4 +33,4 @@ const handleToggle = () => {
       )}
     </button>
   );
-};
+}

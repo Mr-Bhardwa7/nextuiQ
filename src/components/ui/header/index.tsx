@@ -39,18 +39,18 @@ export const Header = ({
 
   return (
     <header className={cn(
-      "w-full bg-background border-b",
+      "w-full bg-[oklch(var(--theme-background))] border-b border-[oklch(var(--theme-border))]",
       className
     )}>
-      <div className="container flex h-16 items-center justify-between">
-        <div className="flex items-center gap-4">
+      <div className="container flex h-[var(--header-height)] items-center justify-between">
+        <div className="flex items-center gap-[var(--header-gap)]">
           {typeof logo === 'string' ? (
-            <img src={logo} alt={altText} className="h-8 w-8" />
+            <img src={logo} alt={altText} className="h-[var(--header-logo-size)] w-[var(--header-logo-size)]" />
           ) : logo}
-          {title && <span className="text-xl font-semibold">{title}</span>}
+          {title && <span className="text-xl font-semibold text-[oklch(var(--theme-foreground))]">{title}</span>}
         </div>
 
-        <nav className="hidden md:flex items-center gap-6" aria-label="Main navigation">
+        <nav className="hidden md:flex items-center gap-[var(--header-nav-gap)]" aria-label="Main navigation">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -58,7 +58,7 @@ export const Header = ({
               variant={link.isActive ? "default" : "ghost"}
               className={cn(
                 "flex items-center gap-2",
-                link.isActive && "text-foreground"
+                link.isActive && "text-[oklch(var(--theme-primary))]"
               )}
               aria-current={link.isActive ? 'page' : undefined}
             >
@@ -111,7 +111,7 @@ export const Header = ({
       <div
         id="mobile-menu"
         className={cn(
-          "container md:hidden py-4 space-y-4",
+          "container md:hidden py-[var(--header-mobile-padding)] space-y-[var(--header-mobile-gap)]",
           isOpen ? "block" : "hidden"
         )}
       >

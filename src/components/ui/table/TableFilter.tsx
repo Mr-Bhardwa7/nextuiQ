@@ -21,20 +21,33 @@ export const TableFilter = ({
   totalResults,
   filteredResults,
 }: TableFilterProps) => (
-  <div className="p-4 border-b border-slate-200 dark:border-slate-700 space-y-4">
+  <div className="p-4 border-b border-[oklch(var(--theme-border))] space-y-4">
     <div className="flex items-center gap-4">
       <div className="relative flex-1">
-        <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+        <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-[oklch(var(--theme-muted-foreground))]" />
         <input
           type="text"
           placeholder="Search by name or email..."
-          className="w-full pl-10 pr-4 py-2 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400"
+          className="w-full pl-10 pr-4 py-2 rounded-md 
+            border border-[oklch(var(--theme-input))] 
+            bg-[oklch(var(--theme-background))]
+            text-[oklch(var(--theme-foreground))]
+            placeholder:text-[oklch(var(--theme-muted-foreground))]
+            focus-visible:outline-none
+            focus-visible:ring-1
+            focus-visible:ring-[oklch(var(--theme-ring))]"
           value={searchTerm}
           onChange={(e) => onSearchChange(e.target.value)}
         />
       </div>
       <select
-        className="px-4 py-2 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white"
+        className="px-4 py-2 rounded-md 
+          border border-[oklch(var(--theme-input))] 
+          bg-[oklch(var(--theme-background))]
+          text-[oklch(var(--theme-foreground))]
+          focus-visible:outline-none
+          focus-visible:ring-1
+          focus-visible:ring-[oklch(var(--theme-ring))]"
         value={statusFilter}
         onChange={(e) => onStatusChange(e.target.value)}
       >
@@ -43,7 +56,13 @@ export const TableFilter = ({
         <option value="Inactive">Inactive</option>
       </select>
       <select
-        className="px-4 py-2 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white"
+        className="px-4 py-2 rounded-md 
+          border border-[oklch(var(--theme-input))] 
+          bg-[oklch(var(--theme-background))]
+          text-[oklch(var(--theme-foreground))]
+          focus-visible:outline-none
+          focus-visible:ring-1
+          focus-visible:ring-[oklch(var(--theme-ring))]"
         value={roleFilter}
         onChange={(e) => onRoleChange(e.target.value)}
       >
@@ -53,7 +72,7 @@ export const TableFilter = ({
         <option value="Editor">Editor</option>
       </select>
     </div>
-    <div className="flex items-center justify-between text-sm text-slate-500 dark:text-slate-400">
+    <div className="flex items-center justify-between text-sm text-[oklch(var(--theme-muted-foreground))]">
       <span>
         Showing {filteredResults} of {totalResults} entries
       </span>

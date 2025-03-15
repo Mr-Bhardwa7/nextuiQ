@@ -28,35 +28,27 @@ const NotificationItem = ({ notification, onItemClick }: {
   onItemClick: () => void;
 }) => (
   <div
-    className="flex gap-3 rounded-lg border-b border-gray-100 p-3 px-4.5 py-3 hover:bg-gray-100 dark:border-gray-800 dark:hover:bg-white/5"
+    className="flex gap-3 rounded-lg border-b border-[oklch(var(--theme-border))] p-3 px-4.5 py-3 
+    hover:bg-[oklch(var(--theme-muted))] transition-colors"
     role="menuitem"
     onClick={onItemClick}
   >
-    <Avatar
-      src={notification.avatar.src}
-      fallback={notification.avatar.fallback}
-      size="sm"
-      status={notification.avatar.status}
-    />
+    <Avatar {...notification.avatar} size="sm" />
     <div className="flex-1">
-      <p className="mb-1.5 space-x-1 text-theme-sm text-gray-500 dark:text-gray-400">
-        <span className="font-medium text-gray-800 dark:text-white/90">
+      <p className="mb-1.5 space-x-1 text-theme-sm text-[oklch(var(--theme-muted-foreground))]">
+        <span className="font-medium text-[oklch(var(--theme-foreground))]">
           {notification.userName}
         </span>
         <span>{notification.message}</span>
-        <span className="font-medium text-gray-800 dark:text-white/90">
+        <span className="font-medium text-[oklch(var(--theme-foreground))]">
           {notification.projectName}
         </span>
       </p>
-      <div className="flex items-center gap-2 text-gray-500 text-theme-xs dark:text-gray-400">
-        <Badge 
-          variant="light" 
-          color={notification.type}
-          size="sm"
-        >
+      <div className="flex items-center gap-2 text-[oklch(var(--theme-muted-foreground))] text-theme-xs">
+        <Badge variant="light" color={notification.type} size="sm">
           {notification.type}
         </Badge>
-        <span className="w-1 h-1 bg-gray-400 rounded-full" aria-hidden="true" />
+        <span className="w-1 h-1 bg-[oklch(var(--theme-muted-foreground))] rounded-full" aria-hidden="true" />
         <time dateTime={new Date(notification.time).toISOString()}>
           {notification.time}
         </time>
@@ -79,12 +71,20 @@ export function NotificationDropdown({ notifications, onViewAll }: NotificationD
         setIsOpen(prev => !prev);
         setNotifying(false);
       }}
-      className="relative dropdown-toggle flex items-center justify-center text-gray-500 transition-colors bg-white border border-gray-200 rounded-full hover:text-gray-700 h-11 w-11 hover:bg-gray-100 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
+      className="relative dropdown-toggle flex items-center justify-center 
+        text-[oklch(var(--theme-muted-foreground))] 
+        bg-[oklch(var(--theme-background))] 
+        border border-[oklch(var(--theme-border))] 
+        rounded-full 
+        hover:text-[oklch(var(--theme-foreground))] 
+        hover:bg-[oklch(var(--theme-muted))] 
+        h-11 w-11 
+        transition-colors"
       aria-label={`Notifications ${notifications.length > 0 ? `(${notifications.length} unread)` : ''}`}
     >
       {notifying && (
-        <span className="absolute right-0 top-0.5 z-10 h-2 w-2 rounded-full bg-orange-400">
-          <span className="absolute inline-flex w-full h-full bg-orange-400 rounded-full opacity-75 animate-ping" />
+        <span className="absolute right-0 top-0.5 z-10 h-2 w-2 rounded-full bg-[oklch(var(--theme-warning))]">
+          <span className="absolute inline-flex w-full h-full bg-[oklch(var(--theme-warning))] rounded-full opacity-75 animate-ping" />
         </span>
       )}
       <svg className="fill-current" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
@@ -102,18 +102,24 @@ export function NotificationDropdown({ notifications, onViewAll }: NotificationD
       trigger={trigger}
       isOpen={isOpen}
       onClose={closeDropdown}
-      className="fixed right-4 top-16 z-50 flex h-[480px] w-[350px] flex-col rounded-xl border border-gray-200 bg-white p-4 shadow-lg dark:border-gray-800 dark:bg-gray-900 sm:absolute sm:right-0 sm:top-full sm:mt-2 sm:w-[400px]"
+      className="fixed right-4 top-16 z-50 flex h-[480px] w-[350px] flex-col rounded-xl 
+        border border-[oklch(var(--theme-border))] 
+        bg-[oklch(var(--theme-background))] 
+        p-4 shadow-md
+        sm:absolute sm:right-0 sm:top-full sm:mt-2 sm:w-[400px]"
       role="dialog"
       aria-modal={true}
       aria-label="Notifications panel"
     >
-      <div className="flex items-center justify-between pb-3 mb-3 border-b border-gray-100 dark:border-gray-800">
-        <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+      <div className="flex items-center justify-between pb-3 mb-3 
+        border-b border-[oklch(var(--theme-border))]">
+        <h2 className="text-lg font-semibold text-[oklch(var(--theme-foreground))]">
           Notifications ({notifications.length})
         </h2>
         <button
           onClick={closeDropdown}
-          className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+          className="text-[oklch(var(--theme-muted-foreground)] 
+            hover:text-[oklch(var(--theme-foreground))]"
           aria-label="Close notifications"
         >
           <svg className="fill-current" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">

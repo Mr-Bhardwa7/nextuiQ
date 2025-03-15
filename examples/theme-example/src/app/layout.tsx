@@ -4,7 +4,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "NextuiQ - Theme Example",
-  description: "Theme customazation example",
+  description: "Theme customization example",
 };
 
 export default function RootLayout({
@@ -14,8 +14,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
-        <ThemeProvider>{children}</ThemeProvider>
+      <body className="bg-[oklch(var(--theme-background))]">
+        <ThemeProvider>
+          <div className="min-h-screen text-[oklch(var(--theme-foreground))]">
+            {children}
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

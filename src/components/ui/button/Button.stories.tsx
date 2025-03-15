@@ -39,8 +39,8 @@ export const Destructive: Story = {
 export const DestructiveOutline: Story = {
   args: {
     children: 'Cancel Subscription',
-    variant: 'destructive',
-    className: 'border border-red-500',
+    variant: 'outline',
+    className: 'text-destructive hover:bg-destructive/10 border-destructive hover:border-destructive/50',
   },
 };
 

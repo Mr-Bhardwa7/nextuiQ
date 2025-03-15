@@ -1,13 +1,73 @@
 # Changelog
 
-All notable changes to NextuiQ will be documented in this file.
+## [0.1.3] - 2024-03-XX
+
+### Added
+
+- New SearchableSelect component with search functionality
+- System theme support in ThemeContext
+- Storybook theme switcher (Light/Dark/System)
+- Responsive viewport presets in Storybook
+- Better theme handling across all components
+- New theme example implementation
+- Improved theme toggle functionality
+- Better dark mode support
+
+### Changed
+
+- Updated all form components to use new theme tokens
+- Improved Storybook configuration and preview settings
+- Enhanced table components with better styling and accessibility
+- Unified styling approach across all UI components
+- Better dark mode support in all components
+- Modernized dropdown components
+- Improved modal and card stories
+
+### Fixed
+
+- Theme persistence and system theme detection
+- Form components accessibility issues
+- Table pagination and filtering improvements
+- Dropdown positioning and styling
+- Modal responsiveness
+- Grid system flexibility
+- Theme context hydration issues
+- Storybook configuration and preview setup
+- Component styling inconsistencies
+
+### Moved
+
+- Form components to new directory structure
+- Example implementations to dedicated folders
+
+### Removed
+
+- Deprecated form examples and unused components
+- Legacy form element implementations
+- Outdated showcase components
+
+### Technical
+
+- Updated component architecture for better theme support
+- Improved TypeScript types across components
+- Better props organization in form components
+- Enhanced story documentation
+- Standardized component styling approach
+
+### Dependencies
+
+- Updated React to version 19
+- Updated Storybook to version 8.6.4
+- Updated TailwindCSS and related packages
+
+[0.1.3]: https://github.com/t7ean/nextuiq/releases/tag/v0.1.3
 
 ## [0.1.2] - 2024-03-14
 
 ### Added
 
 - Theme example project showcasing theme implementation
-- Enhanced theme context with system preference detection  
+- Enhanced theme context with system preference detection
 - CSS variable-based theming system
 - Color palette customization support
 - Smooth theme transitions

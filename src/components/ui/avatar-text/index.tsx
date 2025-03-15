@@ -52,14 +52,14 @@ export const AvatarText: React.FC<AvatarTextProps> = ({
       <div>
         <h4 
           id={titleId}
-          className={`font-medium text-zinc-900 dark:text-white ${textSizeClasses[size]}`}
+          className={`font-medium text-[oklch(var(--theme-foreground))] ${textSizeClasses[size]}`}
         >
           {title}
         </h4>
         {subtitle && (
           <p 
             id={subtitleId}
-            className={`text-slate-500 dark:text-slate-400 ${size === 'lg' ? 'text-base' : 'text-sm'}`}
+            className={`text-[oklch(var(--theme-muted-foreground))] ${size === 'lg' ? 'text-base' : 'text-sm'}`}
           >
             {subtitle}
           </p>

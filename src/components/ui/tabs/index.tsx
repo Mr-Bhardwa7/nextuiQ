@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 
 export interface TabOption {
   id: string;
-  label: string;
+  label: string | React.ReactNode;  // Update to accept both string and ReactNode
   value: string;
 }
 
@@ -52,7 +52,7 @@ export const Tabs: React.FC<TabsProps> = ({
       role="tablist"
       aria-orientation="horizontal"
       className={cn(
-        "flex items-center gap-0.5 rounded-lg bg-slate-100 p-0.5 dark:bg-slate-900",
+        "inline-flex h-10 items-center justify-center rounded-md bg-[oklch(var(--theme-muted))] p-1",
         className
       )}
     >
@@ -67,11 +67,11 @@ export const Tabs: React.FC<TabsProps> = ({
           onClick={() => onChange(option.value)}
           onKeyDown={(e) => handleKeyDown(e, option)}
           className={cn(
-            "px-3 py-2 font-medium w-full rounded-md text-sm transition-all",
-            "hover:text-slate-900 dark:hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-slate-400 dark:focus-visible:ring-slate-600",
+            "inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[oklch(var(--theme-ring))] focus-visible:ring-offset-2",
+            "hover:text-[oklch(var(--theme-foreground))]",
             value === option.value
-              ? "shadow-sm text-slate-900 dark:text-white bg-white dark:bg-slate-800"
-              : "text-slate-500 dark:text-slate-400"
+              ? "bg-[oklch(var(--theme-background))] text-[oklch(var(--theme-foreground))] shadow-sm"
+              : "text-[oklch(var(--theme-muted-foreground)] hover:bg-[oklch(var(--theme-muted)/0.8)]"
           )}
         >
           {option.label}
