@@ -16,7 +16,16 @@ const preview: Preview = {
       disable: true,
     },
     docs: {
-      disable: true,
+      source: {
+        transform: (code: string) => code,
+        language: 'tsx',
+        format: true,
+        type: 'dynamic',
+      },
+      story: {
+        inline: true,
+        height: '100px',
+      },
     },
   },
   decorators: [

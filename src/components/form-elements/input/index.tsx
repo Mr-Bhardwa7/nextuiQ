@@ -19,6 +19,14 @@ export interface InputProps {
   required?: boolean;
   "aria-label"?: string;
   "aria-describedby"?: string;
+  maxLength?: number;
+  minLength?: number;
+  pattern?: string;
+  readOnly?: boolean;
+  autoComplete?: string;
+  autoFocus?: boolean;
+  value?: string | number;
+  size?: number;
 }
 
 const InputComponent = forwardRef<HTMLInputElement, InputProps>(({
@@ -40,6 +48,14 @@ const InputComponent = forwardRef<HTMLInputElement, InputProps>(({
   required = false,
   "aria-label": ariaLabel,
   "aria-describedby": ariaDescribedby,
+  maxLength,
+  minLength,
+  pattern,
+  readOnly = false,
+  autoComplete = "off",
+  autoFocus = false,
+  value,
+  size,
   ...props
 }, ref) => {
   const uniqueId = useId();

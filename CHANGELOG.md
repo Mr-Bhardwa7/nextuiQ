@@ -1,5 +1,30 @@
 # Changelog
 
+## [0.1.4-beta.0] - 2024-03-17
+
+### Added
+
+- New UI Components:
+  - Dialog component with header, content, footer, and close button — ideal for modal-based interactions.
+  - Multi-step component for wizard-like interfaces — useful for guided user flows.
+  - Popover component with trigger and content — great for contextual overlays.
+  - Tooltip component with customizable positioning — enhances user feedback.
+
+### Changed
+
+- Updated Storybook configuration and preview settings for improved consistency.
+- Enhanced form elements input component for better accessibility and styling.
+- Expanded main exports in `index.ts` to include new components.
+- Updated package documentation and license to reflect recent changes.
+
+### Technical
+
+- Ensured all new components have TypeScript type definitions.
+- Verified compatibility with existing theming and styling.
+- Conducted basic accessibility (a11y) checks for all new components.
+
+[0.1.4-beta.0]: https://github.com/t7ean/nextuiq/releases/tag/v0.1.4-beta.0
+
 ## [0.1.3] - 2024-03-15
 
 ### Added

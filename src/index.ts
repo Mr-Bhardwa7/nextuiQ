@@ -37,7 +37,37 @@ export {
 export { Tabs, type TabsProps } from './components/ui/tabs';
 export { ThemeToggle } from './components/ui/theme-toggle';
 export { Grid, type GridProps } from './components/ui/grid';
-
+export { MultiStep, type MultiStepProps } from './components/ui/multi-step';
+export { 
+    Tooltip,
+    TooltipContent,
+    type TooltipProps,
+    type TooltipContentProps,
+} from './components/ui/tooltip';
+export { 
+    Popover,
+    PopoverTrigger,
+    PopoverContent,
+    type PopoverProps,
+    type PopoverTriggerProps,
+    type PopoverContentProps,
+} from './components/ui/popover';
+export { 
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogFooter,
+    DialogTitle,
+    DialogDescription,
+    DialogClose,
+    type DialogProps,
+    type DialogContentProps,
+    type DialogHeaderProps,
+    type DialogFooterProps,
+    type DialogTitleProps,
+    type DialogDescriptionProps,
+    type DialogCloseProps,
+} from './components/ui/dialog';
 // Form Elements
 export { Form, type FormProps } from './components/form-elements/form';
 export { Input, type InputProps } from './components/form-elements/input';
