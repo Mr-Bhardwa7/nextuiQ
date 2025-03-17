@@ -121,7 +121,7 @@ function MyComponent() {
 }
 ```
 
-➡️ **[Full Theming Guide](https://github.com/Mr-Bhardwa7/nextuiQ/tree/master/example/theme-example)**
+➡️ **[Full Theming Guide](https://github.com/Mr-Bhardwa7/nextuiQ/tree/master/examples/theme-example)**
 
 ## 🛠️ Available Components
 
@@ -145,6 +145,7 @@ function MyComponent() {
 - Phone Input
 - File Input
 - Dropbox Input
+- Multi-step form
 
 ### 🧭 Navigation
 
@@ -156,6 +157,8 @@ function MyComponent() {
 
 - Modal
 - Popover
+- Dialog
+- Tooltip
 
 ### 📊 Data Display
 
@@ -202,7 +205,7 @@ npm run storybook
 
 ## 📜 License
 
-[MIT License](https://opensource.org/licenses/MIT) © Animesh Bhardwaj
+[MIT License](https://github.com/Mr-Bhardwa7/nextuiQ/blob/master/LICENSE) © Animesh Bhardwaj
 
 ## 🤝 Community & Support
 
@@ -212,9 +215,9 @@ Join the **NextuiQ** community to get help, report issues, and contribute!
 
 Find everything you need to get started and use **NextuiQ** effectively:
 
-- 📘 **Getting Started** – [README.md](https://github.com/Mr-Bhardwa7/nextuiQ/blob/main/README.md)
-- 📜 **Changelog** – [CHANGELOG.md](https://github.com/Mr-Bhardwa7/nextuiQ/blob/main/CHANGELOG.md)
-- 📖 **Storybook** – [View Components](https://nextuiq-docs.vercel.app)
+- 📘 **Getting Started** – [README.md](https://github.com/Mr-Bhardwa7/nextuiQ/blob/master/README.md)
+- 📜 **Changelog** – [CHANGELOG.md](https://github.com/Mr-Bhardwa7/nextuiQ/blob/master/CHANGELOG.md)
+- 📖 **Storybook** – [View Components Library](https://nextuiq.vercel.app)
 
 ### 💬 Community & Support
 
