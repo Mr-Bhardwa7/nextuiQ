@@ -89,5 +89,5 @@ export * from './hooks/useTable';
 export { cn, getRelativeTime } from './lib/utils';
 
 // Context
-export * from './context/ThemeContext';
-export * from './context/SidebarContext';
+export { ThemeProvider, useTheme } from './context/ThemeContext';
+export { SidebarProvider, useSidebar } from './context/SidebarContext';

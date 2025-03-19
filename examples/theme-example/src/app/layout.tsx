@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ThemeProvider } from "../../../../src/context/ThemeContext";
+import { ThemeProviderWrapper } from "@/components/providers/theme-provider";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -15,11 +15,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="bg-[oklch(var(--theme-background))]">
-        <ThemeProvider>
+        <ThemeProviderWrapper>
           <div className="min-h-screen text-[oklch(var(--theme-foreground))]">
             {children}
           </div>
-        </ThemeProvider>
+        </ThemeProviderWrapper>
       </body>
     </html>
   );

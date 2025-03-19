@@ -1,7 +1,7 @@
 "use client";
 
 import { ThemeToggle } from "../components/ThemeToggle";
-import { useTheme } from "../../../../src/context/ThemeContext";
+import { useTheme } from "nextuiq";
 import { useEffect, useState } from 'react';
 
 export default function Home() {
