@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url'
 import { dirname, resolve } from 'path'
 import tailwindcss from '@tailwindcss/vite'
 import dts from 'vite-plugin-dts'
+import {visualizer} from 'rollup-plugin-visualizer'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -15,6 +16,14 @@ export default defineConfig({
     dts({
       insertTypesEntry: true,
       include: ['src/**/*'],
+      exclude: ['src/examples/**/*', '**/examples/**/*', 'src/main.tsx']
+    }),
+    visualizer({ 
+      filename: './bundle-analysis.html', 
+      open: true,
+      gzipSize: true,
+      brotliSize: true,
+      template: 'treemap' 
     })
   ],
   resolve: {
@@ -30,17 +39,51 @@ export default defineConfig({
       fileName: (format) => `index.${format === 'es' ? 'mjs' : 'js'}`
     },
     rollupOptions: {
-      external: ['react', 'react-dom'],
+      external: [
+        'react', 
+        'react-dom',
+        'react-icons',
+        'react-dropzone',
+        'class-variance-authority',
+        'clsx',
+        'tailwind-merge'
+      ],
       output: {
+        preserveModules: true,
+        preserveModulesRoot: 'src',
+        exports: 'named',
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM'
         },
-        assetFileNames: 'styles.[ext]'
+        assetFileNames: 'style.css'  
       }
     },
-    sourcemap: true,
-    cssCodeSplit: false,
-    cssMinify: true
+    cssCodeSplit: false,  
+    sourcemap: false,
+    cssMinify: true,
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+        ecma: 2020,
+        pure_getters: true,
+        keep_fargs: false,
+        passes: 2,
+        unsafe_arrows: true,
+        unsafe_methods: true
+      },
+      mangle: {
+        properties: false
+      },
+      format: {
+        comments: false,
+        ecma: 2020
+      },
+    },
+    emptyOutDir: true,
+    target: 'esnext',
+    reportCompressedSize: true
   }
 })

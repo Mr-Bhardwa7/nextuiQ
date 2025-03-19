@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import 'nextuiq/dist/styles.css';
+@import 'nextuiq/style.css';
 
 @theme {
   /* Base Colors */

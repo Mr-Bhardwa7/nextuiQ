@@ -1,5 +1,40 @@
 # Changelog
 
+# Changelog
+
+## [0.1.5-beta.0] - 2024-03-19
+
+### Build Optimizations
+
+- Reduced bundle size by implementing code splitting and tree shaking
+- Added bundle analysis visualization using rollup-plugin-visualizer
+- Optimized CSS output by disabling code splitting (cssCodeSplit: false)
+- Implemented proper asset file naming for consistent builds
+- Added terser optimization for better code minification
+- Excluded example folders from production build
+- Removed unused SVG assets from public directory
+
+### Theme Provider Improvements
+
+- Improved theme provider performance
+- Optimized theme provider initialization
+- Added proper type exports for theme components
+
+### Package Configuration
+
+- Updated exports field in package.json for better CSS handling
+- Improved type definitions generation
+- Added proper side effects declaration for CSS and TSX files
+- Streamlined external dependencies configuration
+
+### Developer Experience
+
+- Added bundle analysis HTML report for better build insights
+- Improved build error reporting
+- Updated example project structure for better demonstration
+
+[0.1.5-beta.0]: https://github.com/t7ean/nextuiq/releases/tag/v0.1.5-beta.0
+
 ## [0.1.4-beta.0] - 2024-03-17
 
 ### Added
@@ -173,24 +208,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tailwind CSS integration
 - Storybook documentation
 
-### Changed
-
-- N/A (Initial release)
-
-### Deprecated
-
-- N/A (Initial release)
-
-### Removed
-
-- N/A (Initial release)
-
-### Fixed
-
-- N/A (Initial release)
-
-### Security
-
-- N/A (Initial release)
-
-[1.0.0]: https://github.com/t7ean/nextuiq/releases/tag/v1.0.0
+[0.1.0]: https://github.com/t7ean/nextuiq/releases/tag/v0.1.0

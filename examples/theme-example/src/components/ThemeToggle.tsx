@@ -1,6 +1,6 @@
 "use client";
 
-import { useTheme } from "../../../../src/context/ThemeContext";
+import { useTheme } from "nextuiq";
 
 export function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();

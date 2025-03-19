@@ -46,7 +46,7 @@ yarn add nextuiq
 Add the following import to your global CSS file:
 
 ```css
-@import "nextuiq/dist/styles.css";
+@import "nextuiq/style.css";
 ```
 
 ### 2️⃣ Use Components
