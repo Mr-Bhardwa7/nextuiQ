@@ -1,6 +1,40 @@
 # Changelog
 
-# Changelog
+## [0.1.6-beta.0] - 2024-03-20
+
+### Added
+
+- **New Components:**
+  - OTPInput component for entering verification codes
+  - Button icons to provide enhanced visual feedback
+- **New Hooks:**
+  - useBreakpoint hook to manage responsive design
+- **Example**:
+  - New pages example added into theme example
+
+### Enhanced
+
+- **Form Components:**
+  - Improved Checkbox component for better accessibility
+  - Enhanced MultiSelect functionality
+  - Updated SearchableSelect with improved filtering
+  - Refined base structure of Input component
+
+### Documentation
+
+- Updated README to include new component documentation
+- Added new component stories
+- Enhanced button documentation with icon usage examples
+- Improved documentation for form elements
+
+### Technical
+
+- Updated package.json configurations
+- Enhanced build system with more efficient bundle analysis
+- Improved component exports in index.ts
+- Updated vite configuration for optimized performance
+
+[0.1.6-beta.0]: https://github.com/t7ean/nextuiq/releases/tag/v0.1.6-beta.0
 
 ## [0.1.5-beta.0] - 2024-03-19
 

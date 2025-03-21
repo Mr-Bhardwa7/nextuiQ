@@ -1,17 +1,9 @@
-import { forwardRef, useId } from "react";
+import { forwardRef, useId, InputHTMLAttributes } from "react";
 
-export interface InputProps {
+// Extending InputProps to include InputHTMLAttributes
+export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'value'> {
   type?: "text" | "number" | "email" | "password" | "date" | "time" | string;
-  id?: string;
-  name?: string;
-  placeholder?: string;
-  defaultValue?: string | number;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  className?: string;
-  min?: string;
-  max?: string;
-  step?: number;
-  disabled?: boolean;
+  value?: string | number;
   success?: boolean;
   error?: boolean;
   hint?: string;
@@ -19,14 +11,6 @@ export interface InputProps {
   required?: boolean;
   "aria-label"?: string;
   "aria-describedby"?: string;
-  maxLength?: number;
-  minLength?: number;
-  pattern?: string;
-  readOnly?: boolean;
-  autoComplete?: string;
-  autoFocus?: boolean;
-  value?: string | number;
-  size?: number;
 }
 
 const InputComponent = forwardRef<HTMLInputElement, InputProps>(({
@@ -62,12 +46,12 @@ const InputComponent = forwardRef<HTMLInputElement, InputProps>(({
   const inputId = id || uniqueId;
   const hintId = `${inputId}-hint`;
 
-  let inputClasses = `h-11 w-full rounded-lg border appearance-none px-4 py-2.5 text-sm shadow-sm 
+  let inputClasses = ` ${className} h-11 w-full rounded-lg border appearance-none px-4 py-2.5 text-sm shadow-sm 
       bg-[oklch(var(--theme-background))] 
-      text-[oklch(var(--theme-foreground))]
-      placeholder:text-[oklch(var(--theme-muted-foreground))]
-      focus:outline-none focus:ring-2 focus:ring-[oklch(var(--theme-ring))] ${className}`;
-  
+      text-[oklch(var(--theme-foreground))] 
+      placeholder:text-[oklch(var(--theme-muted-foreground))] 
+      focus:outline-none focus:ring-0 focus:ring-[oklch(var(--theme-ring))]`;
+
   if (disabled) {
     inputClasses += ` text-[oklch(var(--theme-muted-foreground))] border-[oklch(var(--theme-border))] 
       bg-[oklch(var(--theme-muted))] cursor-not-allowed`;

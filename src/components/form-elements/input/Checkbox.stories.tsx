@@ -134,3 +134,27 @@ export const CheckboxGroup: Story = {
     );
   },
 };
+
+export const WithReactElement: Story = {
+  render: () => {
+    const [checked, setChecked] = useState(false);
+    return (
+      <Checkbox
+        label={
+          <span className="flex items-center gap-2">
+            I agree to the{" "}
+            <a href="#" className="text-[oklch(var(--theme-primary))] hover:underline">
+              Terms
+            </a>
+            {" "}and{" "}
+            <a href="#" className="text-[oklch(var(--theme-primary))] hover:underline">
+              Privacy Policy
+            </a>
+          </span>
+        }
+        checked={checked}
+        onChange={setChecked}
+      />
+    );
+  },
+};

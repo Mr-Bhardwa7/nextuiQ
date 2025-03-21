@@ -1,7 +1,7 @@
-import { forwardRef, useId } from "react";
+import React, { forwardRef, useId } from "react";
 
 export interface CheckboxProps {
-  label?: string;
+  label?: string | React.ReactNode;
   checked: boolean;
   className?: string;
   id?: string;
@@ -32,8 +32,8 @@ const CheckboxComponent = forwardRef<HTMLInputElement, CheckboxProps>(({
   return (
     <label
       htmlFor={checkboxId}
-      className={`flex items-center space-x-3 group cursor-pointer ${
-        disabled ? "cursor-not-allowed opacity-60" : ""
+      className={`flex items-center space-x-3 group ${
+        disabled ? "cursor-not-allowed opacity-60" : "cursor-pointer"
       }`}
     >
       <div className="relative w-5 h-5">
@@ -42,7 +42,7 @@ const CheckboxComponent = forwardRef<HTMLInputElement, CheckboxProps>(({
           id={checkboxId}
           type="checkbox"
           name={name}
-          className={`w-5 h-5 appearance-none cursor-pointer border rounded-md
+          className={`w-5 h-5 appearance-none border rounded-md
             border-[oklch(var(--theme-border))]
             checked:border-transparent
             checked:bg-[oklch(var(--theme-primary))]
@@ -50,12 +50,13 @@ const CheckboxComponent = forwardRef<HTMLInputElement, CheckboxProps>(({
             focus-visible:outline-none 
             focus-visible:ring-2 
             focus-visible:ring-[oklch(var(--theme-ring))]
+            ${disabled ? "cursor-not-allowed" : "cursor-pointer"}
             ${className}`}
           checked={checked}
           onChange={(e) => onChange(e.target.checked)}
           disabled={disabled}
           required={required}
-          aria-label={ariaLabel || label}
+          aria-label={ariaLabel || (typeof label === 'string' ? label : undefined)}
           aria-describedby={ariaDescribedby}
           aria-checked={checked}
           {...props}

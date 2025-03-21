@@ -2,7 +2,7 @@
 
 Made with ❤️ using **TypeScript** & **Tailwind CSS**.
 
-[![npm version](https://badge.fury.io/js/nextuiq.svg)](https://www.npmjs.com/package/nextuiq)
+[![npm version](https://img.shields.io/npm/v/nextuiq.svg)](https://www.npmjs.com/package/nextuiq)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub Stars](https://img.shields.io/github/stars/Mr-Bhardwa7/nextuiQ?style=social)](https://github.com/Mr-Bhardwa7/nextuiQ)
 [![TypeScript](https://img.shields.io/badge/TypeScript-~5.7.2-blue.svg)](https://www.typescriptlang.org/)
@@ -146,6 +146,7 @@ function MyComponent() {
 - File Input
 - Dropbox Input
 - Multi-step form
+- OTP Input
 
 ### 🧭 Navigation
 
@@ -167,6 +168,13 @@ function MyComponent() {
 - Loader
 - Responsive Image
 - Grid
+
+### 🪝Hooks
+
+- useBreakpoint
+- useTheme
+- useModal
+- useTable
 
 ## 🛠 Development & Contribution
 
