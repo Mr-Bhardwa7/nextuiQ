@@ -82,10 +82,12 @@ export { Label, type LabelProps } from './components/form-elements/label';
 export { Select, type SelectProps } from './components/form-elements/select';
 export { MultiSelect, type MultiSelectProps } from './components/form-elements/select/MultiSelect';
 export { Switch, type SwitchProps } from './components/form-elements/switch';
+export { OTPInput, type OTPInputProps } from './components/form-elements/otp-input';
 
 // Hooks & Utils
 export * from './hooks/useModal';
 export * from './hooks/useTable';
+export * from './hooks/useBreakpoint';
 export { cn, getRelativeTime } from './lib/utils';
 
 // Context

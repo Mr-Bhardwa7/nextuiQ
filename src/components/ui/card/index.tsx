@@ -69,9 +69,8 @@ export function Card({
         orientation === 'horizontal' && 'flex',
         className
       )}
-      role="article"
+      role={clickable ? 'button' : 'article'}
       tabIndex={clickable ? 0 : undefined}
-      aria-orientation={orientation}
       {...props}
     >
       {children}

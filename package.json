@@ -1,6 +1,6 @@
 {
   "name": "nextuiq",
-  "version": "0.1.5-beta.0",
+  "version": "0.1.6-beta.0",
   "description": "NextUIQ is a modern, lightweight, and developer-friendly UI component library for React and Next.js. Built with TypeScript and Tailwind CSS, it offers customizable, accessible, and performance-optimized components with built-in dark mode, theme customization, and semantic color tokens. Designed for seamless integration in modern web applications.",
   "homepage": "https://github.com/Mr-Bhardwa7/nextuiq#readme",
   "repository": {

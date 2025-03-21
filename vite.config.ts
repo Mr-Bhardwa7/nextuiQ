@@ -16,7 +16,7 @@ export default defineConfig({
     dts({
       insertTypesEntry: true,
       include: ['src/**/*'],
-      exclude: ['src/examples/**/*', '**/examples/**/*', 'src/main.tsx']
+      exclude: ['src/examples/**/*', '**/examples/**/*', 'src/main.tsx', '**/*.stories.*']
     }),
     visualizer({ 
       filename: './bundle-analysis.html', 
@@ -56,7 +56,16 @@ export default defineConfig({
           react: 'React',
           'react-dom': 'ReactDOM'
         },
-        assetFileNames: 'style.css'  
+        assetFileNames: (assetInfo) => {
+          const names = assetInfo.names || [];
+          if (names.some(name => name.endsWith('.css'))) {
+            if (names.some(name => name.includes('.stories.'))) {
+              return '';
+            }
+            return 'style.css';
+          }
+          return names[0] || '';
+        }
       }
     },
     cssCodeSplit: false,  

@@ -1,6 +1,7 @@
 import React from 'react';
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+// ButtonProps with Omit to avoid passing certain props directly to the native button element
+export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'aria-label' | 'aria-describedby'> {
   variant?: 'primary' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link';
   size?: 'sm' | 'md';
   startIcon?: React.ReactNode;
@@ -13,6 +14,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   rel?: string;
   ariaLabel?: string;
   ariaDescribedBy?: string;
+  disabled?: boolean;  
 }
 
 export const Button = ({
@@ -22,7 +24,7 @@ export const Button = ({
   size = 'md',
   startIcon,
   endIcon,
-  disabled,
+  disabled = false,  // Default to false
   tag = 'button',
   href,
   loading = false,
@@ -39,7 +41,7 @@ export const Button = ({
     outline: 'border border-[oklch(var(--theme-border))] bg-[oklch(var(--theme-background))] text-[oklch(var(--theme-foreground))] hover:bg-[oklch(var(--theme-muted))]',
     secondary: 'bg-[oklch(var(--theme-secondary))] text-white hover:bg-[oklch(var(--theme-secondary-dark))]',
     ghost: 'text-[oklch(var(--theme-foreground))] hover:bg-[oklch(var(--theme-muted))]',
-    link: 'text-[oklch(var(--theme-primary))] underline-offset-4 hover:underline'
+    link: 'underline-offset-4 hover:underline p-0 h-auto font-normal [&:not([class*="text-"])]:text-[oklch(var(--theme-primary))]'
   };
 
   const sizeClasses = {
@@ -47,11 +49,7 @@ export const Button = ({
     md: 'text-[var(--text-base)] px-[calc(var(--spacing)*1.5)] py-[var(--spacing)]'
   };
 
-  const baseClasses = `inline-flex items-center justify-center font-[var(--font-weight-semibold)] gap-[var(--spacing)] rounded-[var(--radius-md)] transition-all duration-[var(--ease-in-out)] ${
-    sizeClasses[size]
-  } ${variantClasses[variant]} ${
-    (disabled || loading) ? "cursor-not-allowed opacity-50" : ""
-  } ${className}`;
+  const baseClasses = `inline-flex items-center justify-center font-[var(--font-weight-semibold)] gap-[var(--spacing)] rounded-[var(--radius-md)] transition-all duration-[var(--ease-in-out)] whitespace-nowrap ${sizeClasses[size]} ${variantClasses[variant]} ${(disabled || loading) ? "cursor-not-allowed opacity-50" : "cursor-pointer"} ${className}`;
 
   const content = (
     <>
@@ -62,19 +60,25 @@ export const Button = ({
           <span>{loadingText}</span>
         </>
       ) : (
-        <>
+        <div className="inline-flex items-center gap-[var(--spacing)]">
           {startIcon && (
-            <span className="flex items-center -ml-[calc(var(--spacing)*0.125)]" aria-hidden="true">
+            <span className="flex items-center" aria-hidden="true">
               {startIcon}
             </span>
           )}
-          <span className="flex-1">{children}</span>
+          {typeof children === 'string' ? (
+            <span>{children}</span>
+          ) : (
+            <div className="inline-flex items-center gap-3">
+              {children}
+            </div>
+          )}
           {endIcon && (
-            <span className="flex items-center -mr-[calc(var(--spacing)*0.125)]" aria-hidden="true">
+            <span className="flex items-center" aria-hidden="true">
               {endIcon}
             </span>
           )}
-        </>
+        </div>
       )}
     </>
   );
@@ -95,23 +99,23 @@ export const Button = ({
         rel={target === '_blank' ? `${rel || ''} noopener noreferrer`.trim() : rel}
         role="button"
         tabIndex={disabled || loading ? -1 : 0}
-        {...commonProps}
-        {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
+        {...commonProps} // Spread commonProps here
+        {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)} // Explicitly cast to anchor attributes
       >
         {content}
       </a>
     );
   }
 
+  // Default to 'button' tag if tag is not 'a'
   return (
     <button
       type={props.type || 'button'}
-      disabled={disabled || loading}
-      {...commonProps}
-      {...props}
+      disabled={disabled || loading} // Apply disabled to the button
+      {...commonProps} // Spread commonProps here
+      {...props} // Spread the rest of the props
     >
       {content}
     </button>
   );
 };
-

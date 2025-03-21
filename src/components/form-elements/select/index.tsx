@@ -1,23 +1,23 @@
 import React, { useState, useCallback, useId } from "react";
 import { FiChevronDown } from "react-icons/fi";
+import { SelectHTMLAttributes } from "react";
 
+// Define the Option type for the options array
 export interface Option {
   value: string;
   label: string;
   disabled?: boolean;
 }
 
-export interface SelectProps {
+// Extend SelectProps with SelectHTMLAttributes but omit conflicting props
+export interface SelectProps extends Omit<SelectHTMLAttributes<HTMLSelectElement>, 'onChange' | 'value'> {
   options: Option[];
   placeholder?: string;
   onChange: (value: string) => void;
   className?: string;
   defaultValue?: string;
-  disabled?: boolean;
   error?: boolean;
-  required?: boolean;
   name?: string;
-  id?: string;
   "aria-label"?: string;
   "aria-describedby"?: string;
 }
@@ -35,6 +35,7 @@ const SelectComponent = ({
   id,
   "aria-label": ariaLabel,
   "aria-describedby": ariaDescribedby,
+  ...props
 }: SelectProps) => {
   const [selectedValue, setSelectedValue] = useState<string>(defaultValue);
   const uniqueId = useId();
@@ -69,6 +70,7 @@ const SelectComponent = ({
           focus:ring-2
           focus:ring-[oklch(var(--theme-ring))]
           ${className}`}
+        {...props} // Spread other props (like custom `aria-describedby`, `aria-label`, etc.)
       >
         <option value="" disabled hidden>
           {placeholder}

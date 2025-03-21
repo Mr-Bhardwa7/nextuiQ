@@ -2,8 +2,10 @@ import React, { useState, useCallback, useRef, useEffect } from "react";
 import { FiChevronDown, FiSearch, FiX } from "react-icons/fi";
 import { cn } from "@/lib/utils";
 import type { Option } from "./index";
+import { HTMLAttributes } from "react";
 
-interface SearchableSelectProps {
+// Extend SearchableSelectProps with HTMLAttributes for div and button
+interface SearchableSelectProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'id' | 'aria-label' | 'aria-describedby'> {
   options: Option[];
   placeholder?: string;
   onChange: (value: string) => void;
@@ -31,6 +33,7 @@ export const SearchableSelect = ({
   id,
   "aria-label": ariaLabel,
   "aria-describedby": ariaDescribedby,
+  ...props // Spread any extra props onto the outermost div
 }: SearchableSelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -121,6 +124,7 @@ export const SearchableSelect = ({
       ref={containerRef} 
       className="relative"
       onKeyDown={handleKeyDown}
+      {...props} // Spread additional props
     >
       <button
         type="button"
@@ -143,7 +147,7 @@ export const SearchableSelect = ({
           className
         )}
       >
-        <span className={selectedOption ? "text-[oklch(var(--theme-foreground))]" : "text-[oklch(var(--theme-muted-foreground)]"}>
+        <span className={selectedOption ? "text-[oklch(var(--theme-foreground))]" : "text-[oklch(var(--theme-muted-foreground))]"}>
           {selectedOption ? selectedOption.label : placeholder}
         </span>
         <div className="flex items-center gap-2">

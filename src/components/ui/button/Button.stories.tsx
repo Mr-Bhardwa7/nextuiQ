@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import {Button} from '.';
 import { FiArrowRight, FiDownload, FiTrash2 } from 'react-icons/fi';
+import { GoogleIcon } from './icons/google';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/ui/Button',
@@ -62,6 +63,7 @@ export const Link: Story = {
   args: {
     children: 'Link Button',
     variant: 'link',
+    className: "!text-[oklch(var(--theme-primary))] hover:!text-[oklch(var(--theme-primary))]",
   },
 };
 
@@ -115,6 +117,45 @@ export const ButtonGroup: Story = {
     <div className="flex items-center gap-2">
       <Button variant="outline">Cancel</Button>
       <Button>Save</Button>
+    </div>
+  ),
+};
+
+export const GoogleSignIn: Story = {
+  args: {
+    variant: 'outline',
+    className: 'h-12 w-[320px]',
+    startIcon: <GoogleIcon />,
+    children: 'Continue with Google',
+  },
+};
+
+export const GoogleSignInStates: Story = {
+  render: () => (
+    <div className="flex flex-col gap-4 w-[320px]">
+      <Button
+        variant="outline"
+        className="h-12"
+      >
+        <GoogleIcon />
+        Continue with Google
+      </Button>
+      <Button
+        variant="outline"
+        className="h-12"
+        disabled
+      >
+        <GoogleIcon />
+        Continue with Google
+      </Button>
+      <Button
+        variant="outline"
+        className="h-12"
+        loading
+        loadingText="Connecting..."
+      >
+        Continue with Google
+      </Button>
     </div>
   ),
 };

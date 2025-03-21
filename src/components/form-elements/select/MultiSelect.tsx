@@ -1,12 +1,15 @@
 import React, { useState, useCallback, useId, useRef, useEffect } from "react";
+import { HTMLAttributes } from "react";
 
+// Define the Option type for the options array
 export interface Option {
   value: string;
   text: string;
   selected: boolean;
 }
 
-export interface MultiSelectProps {
+// Extend MultiSelectProps with HTMLAttributes for div and input but omit conflicting props
+export interface MultiSelectProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'id' | 'aria-label' | 'aria-describedby'> {
   label: string;
   options: Option[];
   defaultSelected?: string[];
@@ -32,6 +35,7 @@ const MultiSelectComponent = React.forwardRef<HTMLDivElement, MultiSelectProps>(
   id: externalId,
   "aria-label": ariaLabel,
   "aria-describedby": ariaDescribedby,
+  ...props // Spread additional props
 }, ref) => {
   const [selectedOptions, setSelectedOptions] = useState<string[]>(defaultSelected);
   const [isOpen, setIsOpen] = useState(false);
@@ -46,23 +50,29 @@ const MultiSelectComponent = React.forwardRef<HTMLDivElement, MultiSelectProps>(
       }
     };
 
+    // Only add the event listener if the dropdown is open
     if (isOpen) {
       document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
     }
 
+    // Clean up event listener when the component unmounts or when dropdown state changes
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isOpen]); // Add isOpen dependency
+  }, [isOpen]);
 
   const toggleDropdown = useCallback(() => {
-    if (!disabled) setIsOpen(prev => !prev);
+    if (!disabled) {
+      setIsOpen((prev) => !prev);
+    }
   }, [disabled]);
 
   const handleSelect = useCallback((optionValue: string) => {
-    setSelectedOptions(prev => {
+    setSelectedOptions((prev) => {
       const newSelected = prev.includes(optionValue)
-        ? prev.filter(value => value !== optionValue)
+        ? prev.filter((value) => value !== optionValue)
         : [...prev, optionValue];
       onChange?.(newSelected);
       return newSelected;
@@ -70,29 +80,36 @@ const MultiSelectComponent = React.forwardRef<HTMLDivElement, MultiSelectProps>(
   }, [onChange]);
 
   const removeOption = useCallback((value: string) => {
-    setSelectedOptions(prev => {
-      const newSelected = prev.filter(opt => opt !== value);
+    setSelectedOptions((prev) => {
+      const newSelected = prev.filter((opt) => opt !== value);
       onChange?.(newSelected);
       return newSelected;
     });
   }, [onChange]);
 
   const selectedValuesText = options
-    .filter(option => selectedOptions.includes(option.value))
-    .map(option => option.text);
+    .filter((option) => selectedOptions.includes(option.value))
+    .map((option) => option.text);
 
   return (
-    <div className="w-full" ref={ref}>
-      <label 
+    <div className="w-full" ref={ref} {...props}>
+      <label
         id={`${id}-label`}
         htmlFor={id}
         className="mb-1.5 block text-sm font-medium text-[oklch(var(--theme-foreground))]"
       >
         {label}
-        {required && <span aria-hidden="true" className="text-[oklch(var(--theme-destructive))] ml-1">*</span>}
+        {required && (
+          <span
+            aria-hidden="true"
+            className="text-[oklch(var(--theme-destructive))] ml-1"
+          >
+            *
+          </span>
+        )}
       </label>
 
-      <div 
+      <div
         className="relative z-20 inline-block w-full"
         role="combobox"
         aria-expanded={isOpen}
@@ -100,18 +117,22 @@ const MultiSelectComponent = React.forwardRef<HTMLDivElement, MultiSelectProps>(
         aria-labelledby={`${id}-label`}
       >
         <div className="relative flex flex-col items-center">
-          <div 
+          <div
             onClick={toggleDropdown}
             className="w-full"
             role="button"
             tabIndex={disabled ? -1 : 0}
             aria-disabled={disabled}
           >
-            <div className={`mb-2 flex h-11 rounded-lg border ${
-              error ? 'border-[oklch(var(--theme-destructive))]' : 'border-[oklch(var(--theme-border))]'
-            } py-1.5 pl-3 pr-3 shadow-sm outline-none transition 
+            <div
+              className={`mb-2 flex h-11 rounded-lg border ${
+                error
+                  ? "border-[oklch(var(--theme-destructive))]"
+                  : "border-[oklch(var(--theme-border))]"
+              } py-1.5 pl-3 pr-3 shadow-sm outline-none transition 
               focus-within:border-[oklch(var(--theme-ring))] focus-within:ring-2 focus-within:ring-[oklch(var(--theme-ring))]
-              bg-[oklch(var(--theme-background))]`}>
+              bg-[oklch(var(--theme-background))]`}
+            >
               <div className="flex flex-wrap flex-auto gap-2">
                 {selectedValuesText.length > 0 ? (
                   selectedValuesText.map((text, index) => (
@@ -156,8 +177,7 @@ const MultiSelectComponent = React.forwardRef<HTMLDivElement, MultiSelectProps>(
                     placeholder="Select option"
                     className="w-full h-full p-1 pr-2 text-sm bg-transparent border-0 outline-none appearance-none 
                       placeholder:text-[oklch(var(--theme-muted-foreground))] 
-                      text-[oklch(var(--theme-foreground))]
-                      focus:border-0 focus:outline-none focus:ring-0"
+                      text-[oklch(var(--theme-foreground))]"
                     readOnly
                     disabled={disabled}
                     aria-readonly="true"
@@ -197,13 +217,14 @@ const MultiSelectComponent = React.forwardRef<HTMLDivElement, MultiSelectProps>(
 
           {isOpen && (
             <div
+              ref={dropdownRef}
               role="listbox"
               aria-multiselectable="true"
               aria-label={ariaLabel || label}
               aria-describedby={ariaDescribedby}
               className="absolute left-0 z-40 w-full overflow-y-auto bg-[oklch(var(--theme-background))] 
                 rounded-lg shadow-md top-full max-h-select border border-[oklch(var(--theme-border))]"
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e) => e.stopPropagation()} // Prevent click propagation
             >
               <div className="flex flex-col">
                 {options.map((option) => (
@@ -213,14 +234,13 @@ const MultiSelectComponent = React.forwardRef<HTMLDivElement, MultiSelectProps>(
                     aria-selected={selectedOptions.includes(option.value)}
                     onClick={() => handleSelect(option.value)}
                     onKeyDown={(e) => {
-                      if (e.key === 'Enter' || e.key === ' ') {
+                      if (e.key === "Enter" || e.key === " ") {
                         e.preventDefault();
                         handleSelect(option.value);
                       }
                     }}
                     tabIndex={0}
-                    className="w-full cursor-pointer border-b border-[oklch(var(--theme-border))]
-                      hover:bg-[oklch(var(--theme-muted))]"
+                    className="w-full cursor-pointer border-b border-[oklch(var(--theme-border))] hover:bg-[oklch(var(--theme-muted))]"
                   >
                     <div
                       className={`relative flex w-full items-center p-2 pl-2 ${
